@@ -24,9 +24,10 @@ const babelConfig = {
 // -- Lint ----------
 gulp.task('lint', () => {
   return gulp.src([
-    './**/*.js',
-    '!./node_modules/**/*.js',
-    '!./test/fixtures/lib/*.js',
+    './*.js',
+    './src/**/*.js',
+    './test/**/*.js',
+    '!./test/fixtures/lib/**/*.js',
   ]).pipe(eslint())
     .pipe(eslint.format());
 });
