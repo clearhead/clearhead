@@ -1,6 +1,6 @@
 import chai, { assert, expect } from 'chai';
 import sinon, { spy } from 'sinon';
-import jqPoly from '../../../src/jquery-polyfill';
+import jqPoly from '../../../src/optimizely-jquery-polyfill';
 
 const fn = [
   'offset',

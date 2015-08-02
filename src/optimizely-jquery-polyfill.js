@@ -1,5 +1,5 @@
-import fn from './jquery-polyfill/fn';
-import fx from './jquery-polyfill/fx';
+import fn from './optimizely-jquery-polyfill/fn';
+import fx from './optimizely-jquery-polyfill/fx';
 
 export default (_$) => {
   if (_$.chpoly) return;

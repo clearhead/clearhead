@@ -28,8 +28,8 @@ Add new modules to `clearhead/src`. Try using ES6!!!
 There is currently 100% test coverage using Mocha, Chai, Sinon, and PhantomJS.
 Testing any new modules is highly encouraged. See the `test` directory for
 examples of how to test your modules. If you need to use PhantomJS in order
-to test in a browser environment, see `test/jquery-polyfill.html` and
-`test/fixtures/src/jquery-polyfill.js` for an example of how to do so.
+to test in a browser environment, see `test/optimizely-jquery-polyfill.html` and
+`test/fixtures/src/optimizely-jquery-polyfill.js` for an example of how to do so.
 Run `gulp` to make sure your code lints and your tests pass.
 
 Ping @casecode if you need any help!

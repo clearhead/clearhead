@@ -1,5 +1,5 @@
 import chai, { assert, expect } from 'chai';
-import jqPoly from '../src/jquery-polyfill';
+import jqPoly from '../src/optimizely-jquery-polyfill';
 
 describe('jQuery Polyfill', () => {
 
