@@ -1,4 +1,4 @@
-# chdev
+# clearhead
 > A module library for the Clearhead Dev Team
 
 ## Installation
@@ -8,20 +8,20 @@ For now, just unpack the tarball to use it in your experiments.
 
 ```shell
 cd path/to/your/experiment
-npm install --save-dev path/to/chdev/dist/chdev.tgz
+npm install --save-dev path/to/clearhead/clearhead/dist/clearhead.tgz
 ```
 
 ## Usage
 
 ```javascript
-import timpl from 'chdev/timpl';
+import timpl from 'clearhead/timpl';
 ```
 
 ## Contributing
 
 ### Adding modules
 
-Add new modules to `chdev/src`. Try using ES6!!!
+Add new modules to `clearhead/src`. Try using ES6!!!
 
 ### Testing
 

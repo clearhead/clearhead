@@ -1,15 +1,18 @@
 {
-  "name": "chdev",
+  "name": "clearhead",
   "version": "0.0.1",
   "description": "Clearhead Dev Module Library",
-  "main": "index.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/clearhead/clearhead-experiments/tree/master/chdev"
+    "url": "git+https://github.com/clearhead/clearhead.git"
   },
+  "bugs": {
+  "url": "https://github.com/clearhead/clearhead/issues"
+  },
+  "homepage": "https://github.com/clearhead/clearhead#readme",
   "author": "case@clearhead.me",
   "license": "Unlicense",
   "devDependencies": {
