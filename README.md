@@ -1,14 +1,10 @@
 # clearhead
-> A module library for the Clearhead Dev Team
+> Clearhead Dev Module Library
 
 ## Installation
 
-The package is currently not on [npm](https://www.npmjs.com/).
-For now, just unpack the tarball to use it in your experiments.
-
 ```shell
-cd path/to/your/experiment
-npm install --save-dev path/to/clearhead/clearhead/dist/clearhead.tgz
+npm install --save-dev https://github.com/clearhead/clearhead.git
 ```
 
 ## Usage
@@ -33,9 +29,3 @@ to test in a browser environment, see `test/optimizely-jquery-polyfill.html` and
 Run `gulp` to make sure your code lints and your tests pass.
 
 Ping @casecode if you need any help!
-
-### Repackaging
-
-After adding new modules, run `gulp package` to repackage a new tarball.
-The package task automatically commits the new tarball and adds a timestamp
-to the commit message.
