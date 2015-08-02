@@ -1,4 +1,5 @@
 test/
+.eslintignore
 .eslintrc
 .gitignore
 gulpfile.babel.js

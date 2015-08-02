@@ -8,9 +8,6 @@ import eslint from 'gulp-eslint';
 import mocha from 'gulp-mocha';
 import gulpSequence from 'gulp-sequence';
 import mochaPhantomJS from 'gulp-mocha-phantomjs';
-import shell from 'gulp-shell';
-import pkg from './package.json';
-import dateFormat from 'dateFormat';
 
 const sequence = gulpSequence.use(gulp);
 
@@ -73,17 +70,3 @@ gulp.task('test:phantomjs', () => {
     .src('./test/*.html')
     .pipe(mochaPhantomJS());
 });
-
-// -- Package ----------
-gulp.task('package', sequence('package:build', 'package:distribute'));
-
-gulp.task('package:build', shell.task([
-  'babel -d temp/ src/ && cp package.json temp/',
-  'cd temp/ && npm pack && cd ..',
-]));
-
-gulp.task('package:distribute', shell.task([
-  `mv -f temp/${ pkg.name }-${ pkg.version }.tgz dist/${ pkg.name }.tgz`,
-  'rm -rf ./temp/',
-  `git add dist/ && git commit -m 'package distro ${ dateFormat(Date.now(), 'isoDateTime') }'`,
-]));
