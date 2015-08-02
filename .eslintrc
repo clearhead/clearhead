@@ -1,0 +1,26 @@
+{
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "globals": {
+  },
+  "rules": {
+    "comma-dangle": [2, "always-multiline"],
+    "consistent-return": 0,
+    "curly": 0,
+    "new-cap": 0,
+    "no-shadow": 0,
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "no-underscore-dangle": 0,
+    "no-unused-vars": 0,
+    "quotes": [2, "single"],
+    "strict": 0
+  }
+}
