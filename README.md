@@ -4,7 +4,7 @@
 ## Installation
 
 ```shell
-npm install --save-dev https://github.com/clearhead/clearhead.git
+npm install --save-dev clearhead
 ```
 
 ## Usage
