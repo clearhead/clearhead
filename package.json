@@ -17,7 +17,11 @@
     "url": "https://github.com/clearhead/clearhead/issues"
   },
   "homepage": "https://github.com/clearhead/clearhead#readme",
-  "author": "case@clearhead.me",
+  "author": "casecode <casey.r.white@gmail.com>",
+  "contributors": [{
+    "name": "tomfuertes",
+    "email": "tomfuertes@gmail.com"
+  }],
   "license": "Unlicense",
   "devDependencies": {
     "babel": "^5.8.19",
