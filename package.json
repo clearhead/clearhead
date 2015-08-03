@@ -4,8 +4,9 @@
   "description": "Clearhead Dev Module Library",
   "scripts": {
     "test": "gulp test",
-    "build": "babel --plugins object-assign -d ./ src/",
-    "bump": "npm run build && npm run test && mversion patch -m && npm publish && git push --follow-tags"
+    "compile": "babel --plugins object-assign -d lib/ src/",
+    "prepublish": "npm run compile",
+    "bump": "npm run test && mversion patch -m && npm publish && git push --follow-tags"
   },
   "repository": {
     "type": "git",
