@@ -2,6 +2,7 @@
 **/*.log
 
 # Builds
+lib
 test/fixtures/lib
 
 # Dependency directory
