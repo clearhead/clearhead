@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "description": "Clearhead Dev Module Library",
   "scripts": {
-    "postinstall": "babel -d ./ src/",
     "test": "gulp test",
-    "build": "babel -d ./ src/",
+    "build": "babel --plugins object-assign -d ./ src/",
     "bump": "npm run build && npm run test && mversion patch -m && npm publish && git push --follow-tags"
   },
   "repository": {
