@@ -13,7 +13,7 @@
     "url": "git+https://github.com/clearhead/clearhead.git"
   },
   "bugs": {
-  "url": "https://github.com/clearhead/clearhead/issues"
+    "url": "https://github.com/clearhead/clearhead/issues"
   },
   "homepage": "https://github.com/clearhead/clearhead#readme",
   "author": "case@clearhead.me",
@@ -35,6 +35,7 @@
     "mocha": "^2.2.5",
     "mocha-jsdom": "^0.3.0",
     "mocha-phantomjs": "^3.6.0",
+    "mversion": "^1.10.0",
     "phantomjs": "^1.9.7-15",
     "sinon": "^1.15.4",
     "through2": "^2.0.0"
