@@ -67,7 +67,7 @@ describe('jQuery Polyfill', () => {
         const { Ztop, Zleft } = Ztest.offset();
 
         assert.equal($top, Ztop);
-        assert.equal($left, Ztop);
+        assert.equal($left, Zleft);
       });
     });
 
@@ -77,7 +77,7 @@ describe('jQuery Polyfill', () => {
         const { Ztop, Zleft } = Ztest.position();
 
         assert.equal($top, Ztop);
-        assert.equal($left, Ztop);
+        assert.equal($left, Zleft);
       });
     });
 
