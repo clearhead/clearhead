@@ -15,9 +15,14 @@ import timpl from 'clearhead/timpl';
 
 ## Contributing
 
-### Adding modules
+### Contributing
 
-Add new modules to `clearhead/src`. Try using ES6!!!
+* Add new modules to `clearhead/src`. Try using ES6!!!
+* Submit updates as PRs.
+
+### On Landing
+
+Run `npm run build` on landing any PRs to auto build / test / bump / push.
 
 ### Testing
 
