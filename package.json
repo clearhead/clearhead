@@ -1,6 +1,6 @@
 {
   "name": "clearhead",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Clearhead Dev Module Library",
   "scripts": {
     "test": "gulp test",
@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/clearhead/clearhead#readme",
   "author": "casecode <casey.r.white@gmail.com>",
-  "contributors": [{
-    "name": "tomfuertes",
-    "email": "tomfuertes@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "tomfuertes",
+      "email": "tomfuertes@gmail.com"
+    }
+  ],
   "license": "Unlicense",
   "devDependencies": {
     "babel": "^5.8.19",
