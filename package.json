@@ -4,7 +4,9 @@
   "description": "Clearhead Dev Module Library",
   "scripts": {
     "postinstall": "babel -d ./ src/",
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "babel -d ./ src/",
+    "bump": "npm run build && npm run test && mversion patch -m && npm publish && git push --follow-tags"
   },
   "repository": {
     "type": "git",
