@@ -1,1 +1,10 @@
-// TODO: TomF is a terrible person
+import chai, { assert, expect } from 'chai';
+import curry from '../src/report';
+
+describe('#report()', () => {
+
+  it('should report a thing', () => {
+    assert.equal('tomf', 'good person');
+  });
+
+});
