@@ -6,12 +6,12 @@
  *
  * @return {null}
  */
-function log() {
+function log(...args) {
   try {
     if (/clearhead-debug|localhost|optimizely_x/.test(location.href))
       document.cookie = 'clearhead-debug=true;path=/;';
     if (/clearhead-debug=true/.test(document.cookie))
-      console.info('clearhead:', ...arguments);
+      console.info('clearhead:', ...args);
   } catch (a) {}
 }
 
