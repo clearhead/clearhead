@@ -7,7 +7,7 @@
     "compile": "rm -rf ./lib/ && babel --plugins object-assign -d ./lib/ src/",
     "prepublish": "npm run compile",
     "postinstall": "mv ./lib/* ./",
-    "bump": "npm run test && mversion patch -m && npm publish && git push --follow-tags"
+    "bump": "npm test && npm version patch -m 'bump to v%s' && npm publish && git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,6 @@
     "mocha": "^2.2.5",
     "mocha-jsdom": "^0.3.0",
     "mocha-phantomjs": "^3.6.0",
-    "mversion": "^1.10.0",
     "phantomjs": "^1.9.7-15",
     "sinon": "^1.15.4",
     "through2": "^2.0.0"
