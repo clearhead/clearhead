@@ -5,8 +5,8 @@
  * @return {store} - store.get, store.set, store.del
  */
 
-function noop() {}
-var store = typeof window !== 'undefined' ? window.localStorage : {
+const noop = (...args) => console.error.call(console, 'window.localStorage undefined', ...args);
+const store = typeof window !== 'undefined' ? window.localStorage : {
   getItem: noop,
   setItem: noop,
   removeItem: noop,
