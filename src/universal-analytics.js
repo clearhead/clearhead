@@ -10,12 +10,11 @@
 function universalAnalytics(experimentId, customVariable) {
 
   $(function() {
-    var EXPERIMENT_ID = experimentId;
     if (window.optimizely &&
-      window.optimizely.variationMap.hasOwnProperty(EXPERIMENT_ID) &&
+      window.optimizely.variationMap.hasOwnProperty(experimentId) &&
       window.ga && typeof ga === 'function') {
-      var name = window.optimizely.data.experiments[EXPERIMENT_ID].name;
-      var variation = window.optimizely.variationNamesMap[EXPERIMENT_ID];
+      var name = window.optimizely.data.experiments[experimentId].name;
+      var variation = window.optimizely.variationNamesMap[experimentId];
       window.ga('set', 'dimension' + customVariable, name + ': ' + variation);
       window.ga('send', 'event', 'optimizely', name, variation, {
           'nonInteraction': 1
