@@ -10,13 +10,11 @@
 function googleAnalytics(experimentId, customVariable) {
 
   $(function() {
-    var EXPERIMENT_ID = experimentId;
-    var CUSTOM_VAR = customVariable;
-    if (window.optimizely && window.optimizely.variationMap.hasOwnProperty(EXPERIMENT_ID)) {
+    if (window.optimizely && window.optimizely.variationMap.hasOwnProperty(experimentId)) {
       window._gaq = window._gaq || [];
-      var name = window.optimizely.data.experiments[EXPERIMENT_ID].name;
-      var variation = window.optimizely.variationNamesMap[EXPERIMENT_ID];
-      window._gaq.push(['_setCustomVar', CUSTOM_VAR, name, variation, 1]);
+      var name = window.optimizely.data.experiments[experimentId].name;
+      var variation = window.optimizely.variationNamesMap[experimentId];
+      window._gaq.push(['_setCustomVar', customVariable, name, variation, 1]);
       window._gaq.push(['_trackEvent', 'Optimizely', name, variation, 0, true]);
     }
   });
