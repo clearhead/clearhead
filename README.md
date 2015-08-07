@@ -1,4 +1,4 @@
-# clearhead
+# clearhead [![Circle CI](https://circleci.com/gh/clearhead/clearhead.svg?style=svg)](https://circleci.com/gh/clearhead/clearhead)
 > Clearhead Dev Module Library
 
 ## Installation
