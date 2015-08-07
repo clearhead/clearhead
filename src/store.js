@@ -4,7 +4,13 @@
  *
  * @return {store} - store.get, store.set, store.del
  */
-var store = window.localStorage;
+
+function noop() {}
+var store = typeof window !== 'undefined' ? window.localStorage : {
+  getItem: noop,
+  setItem: noop,
+  removeItem: noop,
+};
 
 export default {
   get: store.getItem.bind(store),
