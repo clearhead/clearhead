@@ -1,0 +1,21 @@
+{
+  "name": "loadcss",
+  "version": "0.1.7",
+  "main": [
+    "loadCSS.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "homepage": "https://github.com/filamentgroup/loadCSS",
+  "_release": "0.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.7",
+    "commit": "193857189d2633411176e8c7e701ecb5b2070cf4"
+  },
+  "_source": "git://github.com/filamentgroup/loadCSS.git",
+  "_target": "~0.1.7",
+  "_originalSource": "loadcss",
+  "_direct": true
+}
