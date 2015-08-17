@@ -4,7 +4,7 @@
   "description": "Clearhead Dev Module Library",
   "scripts": {
     "test": "gulp test",
-    "compile": "rm -rf ./lib/ && babel --plugins object-assign -d ./lib/ src/",
+    "compile": "rm -rf ./lib/ && touch ./lib/.gitkeep && babel --plugins object-assign -d ./lib/ src/",
     "prepublish": "npm run compile",
     "postinstall": "mv ./lib/* ./",
     "bump": "npm test && npm version patch -m 'bump to v%s' && npm publish && git push --follow-tags"
