@@ -7,7 +7,7 @@ import del from 'del';
 import eslint from 'gulp-eslint';
 import mocha from 'gulp-mocha';
 import gulpSequence from 'gulp-sequence';
-import mochaPhantomJS from 'gulp-mocha-phantomjs';
+// import mochaPhantomJS from 'gulp-mocha-phantomjs';
 
 const sequence = gulpSequence.use(gulp);
 
@@ -43,8 +43,8 @@ gulp.task('test:modules', () => {
 
 gulp.task('test:browser', sequence(
   'test:clean-fixtures',
-  'test:compile-scripts',
-  'test:phantomjs'
+  'test:compile-scripts'
+  // 'test:phantomjs'
 ));
 
 gulp.task('test:clean-fixtures', () => {
@@ -65,8 +65,8 @@ gulp.task('test:compile-scripts', () => {
       .pipe(gulp.dest('./test/fixtures/lib/'));
 });
 
-gulp.task('test:phantomjs', () => {
-  return gulp
-    .src('./test/*.html')
-    .pipe(mochaPhantomJS());
-});
+// gulp.task('test:phantomjs', () => {
+//   return gulp
+//     .src('./test/*.html')
+//     .pipe(mochaPhantomJS());
+// });
