@@ -20,7 +20,6 @@ import timpl from 'clearhead/timpl';
 
 * Add new modules to `clearhead/src`. Try using ES6!!!
 * Submit updates as PRs.
-* Run `npm install --ignore-scripts` on local clone
 
 ### On Landing
 
