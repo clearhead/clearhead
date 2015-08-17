@@ -19,7 +19,7 @@ function googleTagManager(experimentId, customVariable) {
           val = window.optimizely.variationNamesMap[experimentId];
         } catch (e) {}
         return (name && val) ? name + ': ' + val : undefined;
-      }
+      },
     });
   } catch (e) {}
 }

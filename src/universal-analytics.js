@@ -17,8 +17,8 @@ function universalAnalytics(experimentId, customVariable) {
       var variation = window.optimizely.variationNamesMap[experimentId];
       window.ga('set', 'dimension' + customVariable, name + ': ' + variation);
       window.ga('send', 'event', 'optimizely', name, variation, {
-          'nonInteraction': 1
-        });
+        'nonInteraction': 1,
+      });
     }
   });
 
