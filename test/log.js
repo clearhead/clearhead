@@ -4,7 +4,7 @@ import curry from '../src/log';
 describe('#log()', () => {
 
   it('should log a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

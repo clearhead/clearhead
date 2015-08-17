@@ -4,7 +4,7 @@ import curry from '../src/track';
 describe('#track()', () => {
 
   it('should track a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

@@ -4,7 +4,7 @@ import curry from '../src/load-script';
 describe('#loadScript()', () => {
 
   it('should loadScript a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

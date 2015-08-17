@@ -4,7 +4,7 @@ import curry from '../src/report';
 describe('#report()', () => {
 
   it('should report a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

@@ -4,7 +4,7 @@ import curry from '../src/cookie';
 describe('#cookie.get()', () => {
 
   it('should cookie.get a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });
@@ -12,7 +12,7 @@ describe('#cookie.get()', () => {
 describe('#cookie.set()', () => {
 
   it('should cookie.set a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

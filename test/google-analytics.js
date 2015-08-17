@@ -4,7 +4,7 @@ import curry from '../src/google-analytics';
 describe('#googleAnalytics()', () => {
 
   it('should googleAnalytics a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

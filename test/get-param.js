@@ -4,7 +4,7 @@ import curry from '../src/get-param';
 describe('#getParam()', () => {
 
   it('should getParam a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });

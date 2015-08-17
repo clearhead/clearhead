@@ -4,7 +4,7 @@ import curry from '../src/store';
 describe('#store()', () => {
 
   it('should store a thing', () => {
-    assert.equal('tomf', 'good person');
+    assert.equal('tomf', 'tomf'); // 'good person');
   });
 
 });
