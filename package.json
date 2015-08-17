@@ -6,7 +6,7 @@
     "test": "gulp test",
     "compile": "rm -rf ./lib/* && babel --plugins object-assign -d ./lib/ src/",
     "prepublish": "npm run compile",
-    "postinstall": "[ -d ./lib ] && mv ./lib/* ./",
+    "postinstall": "./scripts/postinstall.js",
     "bump": "npm test && npm version patch -m 'bump to v%s' && npm publish && git push --follow-tags"
   },
   "repository": {
