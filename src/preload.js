@@ -5,10 +5,12 @@
  *
  * @return {Array[]} array of images.
  */
- function preload(...sources) {
-   return sources.map((source) => {
-     const image = new Image();
-     image.src = source;
-     return image;
-   });
- }
+function preload(...sources) {
+ return sources.map((source) => {
+   const image = new Image();
+   image.src = source;
+   return image;
+ });
+}
+
+export default preload;
