@@ -8,7 +8,7 @@
  * @return {Function} - the curried function
  */
 
-const url = '//rawgit.com/clearhead/clearhead/master/bower_components/notifyjs/dist/notify.min.js';
+const url = '//rawgit.com/clearhead/clearhead/master/bower_components/notifyjs/dist/notify-combined.min.js';
 let script = null;
 
 function notify(...args) {
