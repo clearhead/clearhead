@@ -14,7 +14,7 @@ function when(selector, callback, optTimeout) {
   );
 
   // search dom for element
-  var $this = typeof $jq === 'function' ? jQuery(selector) : [];
+  var $this = typeof $jq === 'function' ? $jq(selector) : [];
 
   log('when:', selector, $this);
 
