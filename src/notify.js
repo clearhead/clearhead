@@ -26,7 +26,7 @@ function notify(...args) {
   script = script || jQuery.getScript(url); // promise
 
   script.done(function () {
-    $.notify.apply($, args.join(': '));
+    jQuery.notify.apply(jQuery, args.join(': '));
   });
 
 }
