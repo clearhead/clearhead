@@ -1,6 +1,6 @@
 {
   "name": "clearhead",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Clearhead Dev Module Library",
   "scripts": {
     "test": "gulp test",
