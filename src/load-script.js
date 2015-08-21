@@ -2,7 +2,7 @@
  * @desc loadScript() loads a script and fires callback
  *
  * @param {String} url - url of script to load
- * @param {Function} callback - optional callback to fire on load
+ * @param {Function} optCallback - optional callback to fire on load
  *
  * @return {undefined}
  */
