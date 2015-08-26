@@ -23,7 +23,7 @@ import timpl from 'clearhead/timpl';
 
 ### On Landing
 
-Run `npm run build` on landing any PRs to auto build / test / bump / push.
+Run `npm run bump` on landing any PRs to auto build / test / bump / push.
 
 ### Testing
 
