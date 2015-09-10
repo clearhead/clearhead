@@ -16,6 +16,7 @@ dirs.forEach(function (op) {
   if (op.charAt(0) === '.') return;
   var from = dirname + op;
   var to = from.replace('/lib/', '/');
+  console.log('op:', op, 'from:', from, 'to:', to);
   fs.renameSync(from, to);
 });
 
