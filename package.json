@@ -50,9 +50,7 @@
     "mocha": "^2.2.5",
     "mocha-jsdom": "^1.0.0",
     "sinon": "^1.15.4",
-    "through2": "^2.0.0"
-  },
-  "dependencies": {
+    "through2": "^2.0.0",
     "karma-es6-shim": "^0.1.3"
   }
 }
