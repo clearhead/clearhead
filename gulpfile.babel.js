@@ -9,6 +9,8 @@ import mocha from 'gulp-mocha';
 import gulpSequence from 'gulp-sequence';
 // import mochaPhantomJS from 'gulp-mocha-phantomjs';
 
+var Server = require('karma').Server;
+
 const sequence = gulpSequence.use(gulp);
 
 gulp.task('default', sequence('lint', 'test'));
@@ -32,13 +34,16 @@ gulp.task('lint', () => {
 // -- Test ----------
 gulp.task('test', ['test:modules', 'test:browser']);
 
-gulp.task('test:modules', () => {
-  return gulp.src(['./test/*.js'])
-    .pipe(mocha({
-      compilers: {
-        js: babel(babelConfig),
-      },
-    }));
+gulp.task('test:modules', (done) => {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+  }, done).start();
+  // return gulp.src(['./test/*.js'])
+  //   .pipe(mocha({
+  //     compilers: {
+  //       js: babel(babelConfig),
+  //     },
+  //   }));
 });
 
 gulp.task('test:browser', sequence(
