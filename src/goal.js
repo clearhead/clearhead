@@ -6,14 +6,21 @@
  * @return {void}
  *
  * usage:
- *   import goal from 'clearhead/goal';
- *   goal('exp1-foo', 'click', '#bar'); ==>
+ *   const goal = require('clearhead/goal').bind(null, 'exp1-foo');
+ *   goal('click', '#bar'); ==>
  *   // optimizely.push(['trackEvent', 'exp1-foo-click-#bar'])
  *   // monetateQ.push(['trackEvent', ['exp1-foo-click-#bar']])
  *   // s.tl() // won't fire b/c !/^(prop|evar)/i.test(args[0])
  *   // dataLayer.push({event:'clearhead.goal', meta:{category, action, label}})
- *   // ga('send', 'event', category, action, label)
- *   // _gaq.push(['_trackEvent', category, action, label]);
+ *   // ga('send', 'event', 'exp1-foo', 'click', '#bar')
+ *   // _gaq.push(['_trackEvent', 'exp1-foo', 'click', '#bar']);
+ *
+ *   const goal = require('goal').bind(null, 'prop46');
+ *   goal('exp1-foo', 'clicked-header'); ==>
+ *   // optimizely.push(['trackEvent', 'prop46-exp1-foo-clicked-header'])
+ *   // monetateQ.push(['trackEvent', ['prop46-exp1-foo-clicked-header']])
+ *   // require('clearhead/track')('prop46', 'exp1-foo-clicked-header');
+ *
  */
 import track from './track';
 const log = require('./log').bind(null, 'clearhead/goal:');
