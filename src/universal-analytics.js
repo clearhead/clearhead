@@ -8,20 +8,18 @@
  */
 
 function universalAnalytics(experimentId, customVariable) {
-
-  $(function() {
+  $(function onDomReady() {
     if (window.optimizely &&
       window.optimizely.variationMap.hasOwnProperty(experimentId) &&
       window.ga && typeof ga === 'function') {
-      var name = window.optimizely.data.experiments[experimentId].name;
-      var variation = window.optimizely.variationNamesMap[experimentId];
+      const name = window.optimizely.data.experiments[experimentId].name;
+      const variation = window.optimizely.variationNamesMap[experimentId];
       window.ga('set', 'dimension' + customVariable, name + ': ' + variation);
       window.ga('send', 'event', 'optimizely', name, variation, {
         'nonInteraction': 1,
       });
     }
   });
-
 }
 
 export default universalAnalytics;
