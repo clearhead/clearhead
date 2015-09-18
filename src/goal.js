@@ -25,10 +25,10 @@
 import track from './track';
 const log = require('./log').bind(null, 'clearhead/goal:');
 
-function goal(category, action, label) {
+function goal(category, ...args /*option, label*/ ) {
   'use strict';
 
-  const lowercaseSlug = [category, action, label].join('-').toLowerCase();
+  const lowercaseSlug = [category, ...args].join('-').toLowerCase();
 
   // optimizely goals first
   if (window.optimizely && !!window.optimizely.push) {
@@ -44,28 +44,28 @@ function goal(category, action, label) {
 
   // omniture
   if (/^(prop|evar)/i.test(category) && window.s && !!window.s.tl) {
-    log('s.tl', category, [action, label].join('-'));
-    track(category, [action, label].join('-'));
+    let fire = [...args].join('-');
+    log('s.tl', category, fire);
+    track(category, fire);
     return;
   }
 
   // google tag manager > ga > _gaq
   if (!!window.dataLayer && !!window.dataLayer.push) {
-    log('dataLayer.push', 'event:clearhead.goal',
-      'meta: {', 'category:', category, 'action:', action, 'label:', label, '}'
-    );
-    window.dataLayer.push({
+    let push = {
       event: 'clearhead.goal',
       meta: {
-        category, action, label
+        category, action: args[0], label: args[1]
       },
-    });
+    };
+    log('dataLayer.push', push);
+    window.dataLayer.push(push);
   } else if (typeof window.ga === 'function') {
-    log('ga', category, action, label);
-    window.ga('send', 'event', category, action, label);
+    log('ga', category, ...args);
+    window.ga('send', 'event', category, ...args);
   } else if (!!window._gaq && !!window._gaq.push) {
-    log('_gaq', category, action, label);
-    window._gaq.push(['_trackEvent', category, action, label]);
+    log('_gaq', category, ...args);
+    window._gaq.push(['_trackEvent', category, ...args]);
   }
 
   // intentional leave coremetrics out
