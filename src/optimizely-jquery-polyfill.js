@@ -10,6 +10,7 @@
  *   pollyfill($); // local ref to optimizely.$
  *
  */
+import './object-assign-polyfill';
 import fn from './optimizely-jquery-polyfill/fn';
 import fx from './optimizely-jquery-polyfill/fx';
 
