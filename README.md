@@ -5,6 +5,7 @@
 ## Installation
 
 ```shell
+# npm install phantomjs -g
 npm install --save-dev clearhead
 ```
 
