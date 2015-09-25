@@ -14,11 +14,11 @@ npm install --save-dev clearhead
 import timpl from 'clearhead/timpl';
 ```
 
+NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
+
 ## Contributing
 
-### Contributing
-
-* Add new modules to `clearhead/src`. Try using ES6!!!
+* Add new modules to `clearhead/src` using ES6!!!
 * Submit updates as PRs.
 
 ### On Landing
@@ -27,14 +27,14 @@ Run `npm run bump` on landing any PRs to auto build / test / bump / push.
 
 ### Testing
 
-There is currently 100% test coverage using Mocha, Chai, Sinon, and PhantomJS.
+There is currently test coverage using Mocha, Chai, Sinon, and PhantomJS.
 Testing any new modules is highly encouraged. See the `test` directory for
 examples of how to test your modules. If you need to use PhantomJS in order
 to test in a browser environment, see `test/optimizely-jquery-polyfill.html` and
 `test/fixtures/src/optimizely-jquery-polyfill.js` for an example of how to do so.
 Run `gulp` to make sure your code lints and your tests pass.
 
-Ping @casecode if you need any help!
+Ping @casecode ||  @beaulm || @tomfuertes  if you need any help!
 
 ## License
 
