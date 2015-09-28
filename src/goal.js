@@ -55,7 +55,7 @@ function goal(category, ...args /*option, label*/ ) {
     let push = {
       event: 'clearhead.goal',
       meta: {
-        category, action: args[0], label: args[1]
+        category, action: args[0], label: args[1],
       },
     };
     log('dataLayer.push', push);
