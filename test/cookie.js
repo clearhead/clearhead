@@ -1,18 +1,21 @@
 import chai, { assert, expect } from 'chai';
-import curry from '../src/cookie';
+import cookie from '../src/cookie';
 
-describe('#cookie.get()', () => {
+describe('#cookie()', () => {
 
-  it('should cookie.get a thing', () => {
-    assert.equal('tomf', 'tomf'); // 'good person');
+  const cookieIn = 1;
+  const cookieName = 'testcookie';
+  cookie.set(cookieName, cookieIn);
+
+  it('should set and get a cookie', () => {
+    const cookieOut = cookie.get(cookieName);
+    assert.equal(cookieIn, cookieOut);
   });
 
-});
-
-describe('#cookie.set()', () => {
-
-  it('should cookie.set a thing', () => {
-    assert.equal('tomf', 'tomf'); // 'good person');
+  it('should delete a cookie', () => {
+    cookie.del(cookieName);
+    const cookieOut = cookie.get(cookieName);
+    should.not.exist(cookieOut);
   });
 
 });
