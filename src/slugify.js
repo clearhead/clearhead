@@ -1,5 +1,6 @@
 /**
  * @desc slugify() Returns the 'slug' of a string (replaces non-word characters with hyphens)
+ * Borrowed from https://gist.github.com/mathewbyrne/1280286
  *
  * @param {string} [text] - The string you'd like to slugify
  *
