@@ -4,20 +4,21 @@
  * @param {String} targetSelector - node selector to send
  * @param {Array} configArr - array of properties to set in observe()
  * @param {Object: Function} callback - function to be executed on observed mutations
- * @param {Boolean} oneShot - boolean which when true triggers disconnect on mutations (default: false)
+ * @param {Boolean} optOnce - boolean which when true triggers disconnect on mutations (default: false)
  *
  * @return {MutationObserver} observer - returns configured observer
  */
 
 import log from './log';
 
-function observer(targetSelector, configArr, callback, oneShot = false ){
+function observer(targetSelector, configArr, callback){
   // create target
   var target = document.querySelector(targetSelector);
-  !target.length ? log('Target not found') : continue;
+  if (!target) log('Target not found');
   // create observer constructor
   var Observer = window.MutationObserver || window.WebKitMutationObserver
-  !Observer ? log('Observer constructor unavailable') : continue;
+  if (!Observer) log('Observer constructor unavailable'); // necessary?
+
   // function return whether arg in configArr is accepted
   function checkForMatch(prop) {
     var index = ['childList',
@@ -34,17 +35,13 @@ function observer(targetSelector, configArr, callback, oneShot = false ){
     }
   };
 
-  // set up config object
-  var arrayLimiter =[];
+  var arrayLimiter = []; // array to prevent 2 arrays in configArr
+
+  // check for match,
   var config = {};
   configArr.forEach(function(el, idx){
-    // check if el is valid property
-    if (checkForMatch(prop)) {
-      // if el is an array, set to attributeFilter
-      // if string set matching property to true
-      // else log error and prevent further execution
+    if (checkForMatch(el)) {
       if (el.constructor === Array) {
-        // only allow one array in configArr
         if (arrayLimiter.length < 2) {
           once.push(el);
           config.attributeFilter = el;
@@ -65,21 +62,12 @@ function observer(targetSelector, configArr, callback, oneShot = false ){
 
   // if config setup was valid/successful
   // create observer
-
-  if (!config.mismatch && target.length) {
-    var observer = new Observer(function() {
-      /* Still thinking if this should be extended/changed */
-
-      callBack();
-      
-      if (oneShot) {
-        observer.disconnect();
-      }
-    });
+  if (!config.mismatch && target) {
+    var observer = new Observer(callback); // access MutationRecord with 'this' in callback
     observer.observe(target, config);
   }
 
-  return observer();
+  return observer;
 }
 
 export default observer;
