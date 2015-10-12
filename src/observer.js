@@ -42,7 +42,7 @@ function observer(targetSelector, configArr, callback){
     if (checkForMatch(el)) {
       if (el.constructor === Array) {
         if (arrayLimiter.length < 2) {
-          once.push(el);
+          arrayLimiter.push(el);
           config.attributeFilter = el;
         } else {
           log('Only one array accepted in configArr parameter');
