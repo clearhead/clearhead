@@ -36,7 +36,7 @@ function observer(targetSelector, configArr, callback){
 
   var arrayLimiter = []; // array to prevent 2 arrays in configArr
 
-  // check for match,
+  // check for match, var type, & only one array
   var config = {};
   configArr.forEach(function(el, idx){
     if (checkForMatch(el)) {
