@@ -4,7 +4,6 @@
  * @param {String} targetSelector - node selector to send
  * @param {Array} configArr - array of properties to set in observe()
  * @param {Object: Function} callback - function to be executed on observed mutations
- * @param {Boolean} optOnce - boolean which when true triggers disconnect on mutations (default: false)
  *
  * @return {MutationObserver} observer - returns configured observer
  */
