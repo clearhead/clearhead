@@ -1,6 +1,18 @@
 /**
  * @desc activateExperiment() Activates an Optimizely experiment after a specified time
  *
+ * Because javascript always returns a UTC timestamp (not your local time), to get a launch time use any online timestamp calculator to get the UTC timestamp for when you want the test to launch,
+ * then subtract the UTC offset of the timezone where it will be launching, times 3600 (the number of seconds in an hour).
+ *
+ * Here are some examples:
+ *
+ * CST (daylight savings -6): timestamp + 21600
+ * CDT (daylight savings: -5): timestamp + 18000
+ * PST (daylight savings -8): timestamp + 28800
+ * PDT (daylight savings: -7): timestamp + 25200
+ *
+ * So if you wanted a test to start Friday, October 16th, 2015 at 10:00 pm CST, you'd find the UTC timestamp for that, which is 1445032800 then add 18000 to get to 1445050800
+ *
  * @param {int} launchTime - A UTC timestamp(in seconds -- 10 digit int) after which point the experiment should always be triggered
  * @param {int} experimentOptimizelyID - The Optimizely ID (10 digit int) of the actual experiment where the variation code lives
  * @param {int} [activationOptimizelyID=null] - The Optimizely ID (10 digit int) of the 100% experiment where this code will run. Only necessary to make previewing easy
