@@ -23,9 +23,31 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 @casecode - Can you help fill in a description and example for this one?
 
+### batch
+
+Breaks an array into smaller arrays of a given length.
+
+```javascript
+var longArray = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+var smallerArrays = batch(longArray, 2);
+
+/*
+
+smallerArrays -> [
+	['zero', 'one'],
+	['two', 'three'],
+	['four', 'five'],
+	['six', 'seven'],
+	['eight', 'nine']
+]
+
+*/
+```
+
+
 ### slugify
 
-Returns the 'slug' of a string (replaces non-word characters with hyphens) 
+Returns the 'slug' of a string (replaces non-word characters with hyphens).
 
 ```javascript
 var articleTitle = 'How to use the Clearhead module library!';
