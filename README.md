@@ -19,11 +19,15 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 # Modules
 
-### clearhead/when
+### clearhead/slugify
 
-lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+Returns the 'slug' of a string (replaces non-word characters with hyphens) 
 
-`when('h1', function ($el) {$el.text('foo')});`
+```
+var articleTitle = 'How to use the Clearhead module library!';
+var articleSlug = slugify(articleTitle);
+console.log(articleSlug); //Outputs: how-to-use-the-clearhead-module-library
+```
 
 ## Contributing
 
