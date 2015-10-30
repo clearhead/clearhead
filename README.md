@@ -11,21 +11,6 @@ npm install --save-dev clearhead
 
 ## Usage
 
-### Standalone
-
-Make sure browserify is installed, either in your project or globally (`npm install browserify -g`)
-
-```javascript
-var slugify = require('clearhead/slugify');
-
-var articleTitle = 'How to use the Clearhead module library!';
-var articleSlug = slugify(articleTitle);
-```
-
-Build your code: `browserify test.js -o output.js`
-
-### Inside a project
-
 ```javascript
 import timpl from 'clearhead/timpl';
 ```
@@ -57,6 +42,23 @@ smallerArrays -> [
 ]
 
 */
+```
+
+### console-polyfill
+
+@tomfuertes - Can you help fill in a description and example for this one?
+
+### cookie
+
+Sets a cookie with a given name, value, and optional expiration date (in days).
+
+```
+import cookie from 'clearhead/cookie';
+
+var cookieName = 'the-name-of-my-cookie';
+var cookieVal = 'the-value-of-my-cookie';
+
+cookie.set(cookieName, cookieVal, 365);
 ```
 
 
