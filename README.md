@@ -19,7 +19,11 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 # Modules
 
-### clearhead/slugify
+### async
+
+@casecode - Can you help fill in a description and example for this one?
+
+### slugify
 
 Returns the 'slug' of a string (replaces non-word characters with hyphens) 
 
