@@ -1,5 +1,4 @@
 /**
- * TODO: Better Docs -- TomF is a terrible person
  * @desc when() polls or an jQuery && an element
  */
 import log from './log';
