@@ -75,7 +75,9 @@ var cookieVal = 'the-value-of-my-cookie';
 
 cookie.set(cookieName, cookieVal, 365);
 ```
+### coremetrics
 
+@tomfuertes, not sure how this one works/a good code example for it
 
 ### slugify
 
