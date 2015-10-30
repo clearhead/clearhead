@@ -11,6 +11,17 @@ npm install --save-dev clearhead
 
 ## Usage
 
+### Standalone
+
+```javascript
+var slugify = require('clearhead/slugify');
+
+var articleTitle = 'How to use the Clearhead module library!';
+var articleSlug = slugify(articleTitle);
+```
+
+### Inside a project
+
 ```javascript
 import timpl from 'clearhead/timpl';
 ```
