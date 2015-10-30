@@ -2,6 +2,8 @@
 
 > Clearhead Dev Module Library
 
+TODO: Quick marketing use case / maybe a screenshot
+
 ## Installation
 
 ```shell
