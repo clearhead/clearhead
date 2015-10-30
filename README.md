@@ -23,7 +23,7 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
 
-`when('h1', function ($el) {$el.text('foo')});
+`when('h1', function ($el) {$el.text('foo')});`
 
 ## Contributing
 
