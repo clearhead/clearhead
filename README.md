@@ -17,6 +17,14 @@ import timpl from 'clearhead/timpl';
 
 NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
+# Modules
+
+### clearhead/when
+
+lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+
+`when('h1', function ($el) {$el.text('foo')});
+
 ## Contributing
 
 * Add new modules to `clearhead/src` using ES6!!!
