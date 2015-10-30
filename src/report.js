@@ -1,6 +1,7 @@
 /**
- * TODO: Better Docs -- TomF is a terrible person
  * @desc report() sends a errors back to GA as events for wallboards
+ *                why a module? b/c not all clients load window.ga so
+ *                this just reverse engineers the endpoint using a beacon
  *
  * @param {String} idx - idx sent as event action
  * @param {Error} args - concatenated and reported args
