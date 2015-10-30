@@ -1,5 +1,4 @@
 /**
- * TODO: Better Docs -- TomF is a terrible person
  * @desc #store exposes a simple pattern to get / set from localStorage
  *
  * @return {store} - store.get, store.set, store.del
