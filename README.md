@@ -17,6 +17,21 @@ import timpl from 'clearhead/timpl';
 
 NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
+### Standalone
+
+Make sure browserify is installed, either in your project or globally (`npm install browserify -g`)
+
+```javascript
+var slugify = require('clearhead/slugify');
+
+var articleTitle = 'How to use the Clearhead module library!';
+var articleSlug = slugify(articleTitle);
+```
+Build your code: `browserify test.js -o output.js`
+
+### Inside a project
+
+
 # Modules
 
 ### async
