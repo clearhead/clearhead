@@ -1,6 +1,4 @@
-# clearhead [![Circle CI](https://circleci.com/gh/clearhead/clearhead.svg?style=svg)](https://circleci.com/gh/clearhead/clearhead)
-
-> Clearhead Dev Module Library
+# `clearhead` dev module library [![Circle CI](https://circleci.com/gh/clearhead/clearhead.svg?style=svg)](https://circleci.com/gh/clearhead/clearhead)
 
 TODO: Quick marketing use case / maybe a screenshot
 
