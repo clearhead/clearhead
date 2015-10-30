@@ -1,5 +1,4 @@
 /**
- * TODO: Better Docs -- TomF is a terrible person
  * @desc log() console.logs based on auto sniffing debug cookie
  *
  * @param {...args} args - prefixed with 'clearhead:'
