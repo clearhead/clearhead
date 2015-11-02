@@ -235,6 +235,22 @@ preload('./imgs/img01.jpg', './imgs/img02.jpg', './imgs/img03.jpg', './imgs/img0
 //need advice on what exactly is returned, not sure
 ```
 
+### report
+
+Sends an error back to GA as events for wallboards. Why a module? Because not all clients load window.ga so this just reverse engineers the endpoint using a beacon.
+
+```javascript
+//example code here
+```
+
+### return-visitor
+
+Fires code when a user returns to an experiment. Uses clearhead/cookie.
+
+```javascript
+function returnVisitor(optCookieName = 'ch-exp-last-visit', optCallback = null, optCutoff = 1800, optFirstTime = true, optCookieDays = 365):
+```
+
 ### slugify
 
 Returns the 'slug' of a string (replaces non-word characters with hyphens).
@@ -243,6 +259,68 @@ Returns the 'slug' of a string (replaces non-word characters with hyphens).
 var articleTitle = 'How to use the Clearhead module library!';
 var articleSlug = slugify(articleTitle);
 console.log(articleSlug); //Outputs: how-to-use-the-clearhead-module-library
+```
+
+### store
+
+Exposes a simple pattern to get / set from localStorage.
+
+```javascript
+// example code here.
+```
+
+### throttle
+
+Borrowed from http://underscorejs.org/docs/underscore.html
+
+Returns a function, that, when invoked, will only be triggered at most once during a given window of time. Normally, the throttled function will run as much as it can, without ever going more than once per wait duration; but if you’d like to disable the execution on the leading edge, pass {leading: false}. To disable execution on the trailing edge, ditto.
+
+```javascript
+// example code here
+```
+
+### timpl
+
+Uses double-handlebar syntax to template a string with a data object.
+
+```javascript
+// example code here
+```
+
+### track
+
+Sends a prop to SiteCatalyst.
+
+```javascript
+// example code here
+```
+
+### universal-analytics
+
+Sends information to Google Universal Analytics.
+
+```javascript
+// example code here
+```
+
+### when
+
+Polls for a jQuery element, and exectues code when the element is found. Also can have optional timeout.
+
+```javascript
+function callBackFun() {
+  console.log('it happened!');
+};
+
+when($('.this-div'), callBackFun, 500);
+```
+
+### wrap
+
+Helper pattern for try / catch / report.
+
+```javascript
+// example code here
 ```
 
 ## Contributing
