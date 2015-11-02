@@ -171,6 +171,17 @@ Loads a CSS file asynchronously.
 loadCSS('../styles/styles.css', null, media);
 ```
 
+### load-script
+
+Loads a script and fires callback.
+
+```javascript
+function optCallBack() {
+  console.log('my callback function is firing after the script loads!');
+};
+loadScript('../src/main.js', optCallBack);
+```
+
 ### slugify
 
 Returns the 'slug' of a string (replaces non-word characters with hyphens).
