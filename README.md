@@ -152,7 +152,7 @@ require('clearhead/track')('prop46', 'exp1-foo-clicked-header');
 Sends information to googleAnalytics.
 
 ```javascript
-googleAnalytics(1234567, 'my custom variable');
+googleAnalytics(1234567, 'my-custom-variable');
 ```
 
 ### google-tag-manager
@@ -160,7 +160,7 @@ googleAnalytics(1234567, 'my custom variable');
 Exposes information to googleTagManager by setting a global variable.
 
 ```javascript
-googleTagManager(1234567, 'my custom variable');
+googleTagManager(1234567, 'my-custom-variable');
 ```
 
 ### load-css
