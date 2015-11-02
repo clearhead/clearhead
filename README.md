@@ -182,6 +182,59 @@ function optCallBack() {
 loadScript('../src/main.js', optCallBack);
 ```
 
+### log
+
+Console.logs based on auto sniffing debug cookie.
+
+```javascript
+// example code here
+```
+
+### notify
+
+Notify.js is a jQuery plugin to provide simple yet fully customisable notifications.
+
+```javascript
+$.notify('Hello!');
+
+// or pass in optional message style (e.g. success, info, warn, or error)
+$.notify('Uh oh!', 'warn');
+```
+
+### object-assign-polyfill
+
+@beaulm No comments
+
+```javascript
+// example code here
+```
+
+### onload-css
+
+Adds onload support for asynchronous stylesheets loaded with loadCSS.
+
+```javascript
+// example code here
+```
+
+### optimizely-jquery-polyfill
+
+Returns a pollyfilled jQuery.
+
+```javascript
+//example code here
+```
+
+### preload
+
+Preloads images.
+
+```javascript
+preload('./imgs/img01.jpg', './imgs/img02.jpg', './imgs/img03.jpg', './imgs/img04.jpg');
+
+//need advice on what exactly is returned, not sure
+```
+
 ### slugify
 
 Returns the 'slug' of a string (replaces non-word characters with hyphens).
