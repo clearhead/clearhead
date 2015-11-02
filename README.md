@@ -109,6 +109,68 @@ function dbFunction() {
 };
 debounce(dbFunction, 1000);
 ```
+
+### domready
+
+Runs a function on domready - to be used on sites that don't have jQuery right away and/or not at all but you need to wait till the DOM is ready to run something.
+```javascript
+// example code here
+```
+
+### get-param
+
+Gets a param value from location.search.
+
+```javascript
+// example code here
+```
+
+### goal
+Fires strings into auto-detected analytics installs.
+
+```javascript
+const goal = require('clearhead/goal').bind(null, 'exp1-foo');
+
+goal('click', '#bar');
+
+optimizely.push(['trackEvent', 'exp1-foo-click-#bar'])
+monetateQ.push(['trackEvent', ['exp1-foo-click-#bar']])
+s.tl() // won't fire b/c !/^(prop|evar)/i.test(args[0])
+dataLayer.push({event:'clearhead.goal', meta:{category, action, label}})
+ga('send', 'event', 'exp1-foo', 'click', '#bar')
+_gaq.push(['_trackEvent', 'exp1-foo', 'click', '#bar']);
+
+const goal = require('goal').bind(null, 'prop46');
+goal('exp1-foo', 'clicked-header');
+optimizely.push(['trackEvent', 'prop46-exp1-foo-clicked-header'])
+monetateQ.push(['trackEvent', ['prop46-exp1-foo-clicked-header']])
+require('clearhead/track')('prop46', 'exp1-foo-clicked-header');
+```
+
+### google-analytics
+
+Sends information to googleAnalytics.
+
+```javascript
+googleAnalytics(1234567, 'my custom variable');
+```
+
+### google-tag-manager
+
+Exposes information to googleTagManager by setting a global variable.
+
+```javascript
+googleTagManager(1234567, 'my custom variable');
+```
+
+### load-css
+
+Loads a CSS file asynchronously.
+
+```javascript
+loadCSS('../styles/styles.css', null, media);
+```
+
 ### slugify
 
 Returns the 'slug' of a string (replaces non-word characters with hyphens).
