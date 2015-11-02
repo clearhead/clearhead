@@ -38,6 +38,10 @@ Build your code: `browserify test.js -o output.js`
 
 @casecode - Can you help fill in a description and example for this one?
 
+```javascript
+//example code here
+```
+
 ### batch
 
 Breaks an array into smaller arrays of a given length.
@@ -63,6 +67,10 @@ smallerArrays -> [
 
 @tomfuertes - Can you help fill in a description and example for this one?
 
+```javascript
+//example code here
+```
+
 ### cookie
 
 Sets a cookie with a given name, value, and optional expiration date (in days).
@@ -79,6 +87,28 @@ cookie.set(cookieName, cookieVal, 365);
 
 @tomfuertes, not sure how this one works/a good code example for it
 
+```javascript
+//example code here
+```
+
+### curry
+
+Returns a curried function that will not be called until all arguments received.
+
+```javascript
+//example code here
+```
+
+### debounce
+
+Prevents a function from being recalled repeatedly. The function will be called again after it stops being called for N milliseconds.
+
+```javascript
+function dbFunction() {
+  console.log('debounce worked!');
+};
+debounce(dbFunction, 1000);
+```
 ### slugify
 
 Returns the 'slug' of a string (replaces non-word characters with hyphens).
