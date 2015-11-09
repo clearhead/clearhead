@@ -73,22 +73,26 @@ smallerArrays -> [
 
 ### cookie
 
-Sets a cookie with a given name, value, and optional expiration date (in days).
+Sets, gets, and del a cookie with a given name, value, and optional expiration date (in days).
 
-```
+```javascript
 import cookie from 'clearhead/cookie';
 
 var cookieName = 'the-name-of-my-cookie';
 var cookieVal = 'the-value-of-my-cookie';
 
 cookie.set(cookieName, cookieVal, 365);
+cookie.get(cookieName); //Outputs 'the-value-of-my-cookie'
+cookie.del(cookieName);
 ```
 ### coremetrics
 
-@tomfuertes, not sure how this one works/a good code example for it
+Sends information to CoreMetrics
 
 ```javascript
-//example code here
+import coremetrics from 'clearhead/coremetrics';
+
+coremetrics(0123456789);
 ```
 
 ### curry
@@ -96,7 +100,17 @@ cookie.set(cookieName, cookieVal, 365);
 Returns a curried function that will not be called until all arguments received.
 
 ```javascript
-//example code here
+import coremetrics from 'clearhead/curry';
+
+var madlib = curry(function(pronoun, adjective, noun) {
+	console.log(pronoun+' is a '+adjective+' '+noun);
+});
+
+var myMadlib = madlib('Tesla');
+//...
+myMadlib = myMadlib('awesome');
+//...
+myMadlib('scientist');
 ```
 
 ### debounce
