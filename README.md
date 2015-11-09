@@ -100,7 +100,7 @@ coremetrics(0123456789);
 Returns a curried function that will not be called until all arguments received.
 
 ```javascript
-import coremetrics from 'clearhead/curry';
+import curry from 'clearhead/curry';
 
 var madlib = curry(function(pronoun, adjective, noun) {
 	console.log(pronoun+' is a '+adjective+' '+noun);
