@@ -40,7 +40,7 @@ Provides a method of avoiding nested callbacks when performing multiple asynchro
 
 **series(queue, iterator, [done])**
 
-Applies the function `iterator` to each item in the `queue` array, in parallel.
+Applies the function `iterator` to each item in the `queue` array, in sequence.
 The `iterator` is called with an item from the list, and a done callback for when it
 has finished.
 
@@ -60,7 +60,7 @@ series([1, 2, 3, 4], (curr, next, prev = 0) => {
 
 **waterfall(queue)**
 
-Runs the `queue` array of functions in series, each passing its results to the next in
+Runs the `queue` array of functions in sequence, each passing its results to the next in
 the array.
 
 ```javascript
