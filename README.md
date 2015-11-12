@@ -36,10 +36,48 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 ### async
 
-@casecode - Can you help fill in a description and example for this one?
+Provides a method of avoiding nested callbacks when performing multiple asynchronous operations (note that this module does not enforce that the operations be asynchronous). The module exposes two methods `series` and `waterfall`.
+
+**series(queue, iterator, [done])**
+
+Applies the function `iterator` to each item in the `queue` array, in parallel.
+The `iterator` is called with an item from the list, and a done callback for when it
+has finished.
 
 ```javascript
-//example code here
+// Sum array items asynchronously using a series.
+series([1, 2, 3, 4], (curr, next, prev = 0) => {
+	// curr => the current item value
+	// prev => the previous item value
+	// next => the callback function with previous bound to the current item or the first argument passed to next on the previous iteration.
+  setTimeout(() => {
+    next(prev + curr);
+  }, 0);
+}, (result) => {
+  // do something with the result
+});
+```
+
+**waterfall(queue)**
+
+Runs the `queue` array of functions in series, each passing its results to the next in
+the array.
+
+```javascript
+waterfall([
+	function start(next) {
+		next(0);
+	},
+	function add2(running, next) {
+		next(running + 2);
+	},
+	function multiplyBy5(running, next) {
+		next(running * 5);
+	},
+	function(result) {
+		// do something with the result
+	},
+]);
 ```
 
 ### batch
