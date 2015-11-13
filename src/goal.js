@@ -24,6 +24,7 @@
  */
 import track from './track';
 const log = require('./log').bind(null, 'clearhead/goal:');
+const dataLayerTrigger = require('./deps/datalayer-trigger')();
 
 function goal(category, ...args /*option, label*/ ) {
   'use strict';
@@ -53,7 +54,7 @@ function goal(category, ...args /*option, label*/ ) {
   // google tag manager > ga > _gaq
   if (!!window.dataLayer && !!window.dataLayer.push) {
     let push = {
-      event: 'clearhead.goal',
+      event: dataLayerTrigger,
       meta: {
         category, action: args[0], label: args[1],
       },
