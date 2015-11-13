@@ -12,7 +12,8 @@ const sites = Object.keys(triggerMap);
 export default function getTrigger() {
   const host = window.location.hostname;
 
-  for (let site of sites) {
+  for (let i = 0; i < sites.length; i++) {
+    const site = sites[i];
     if ((new RegExp(site)).test(host)) return triggerMap[site];
   }
 
