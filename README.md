@@ -351,7 +351,11 @@ console.log(articleSlug); //Outputs: how-to-use-the-clearhead-module-library
 Exposes a simple pattern to get / set from localStorage.
 
 ```javascript
-// example code here.
+import store from 'clearhead/store';
+
+store.set('key', 'value');
+store.get('key'); //Returns 'value'
+store.del('key');
 ```
 
 ### throttle
@@ -376,7 +380,9 @@ $(window).on('scroll', throttle(function() {
 Uses double-handlebar syntax to template a string with a data object.
 
 ```javascript
-// example code here
+import timpl from 'clearhead/timpl';
+
+console.log(timpl('<div>{{name}}</div>', {name: 'Bob'})); //Outputs: <div>Bob</div>
 ```
 
 ### track
@@ -384,7 +390,9 @@ Uses double-handlebar syntax to template a string with a data object.
 Sends a prop to SiteCatalyst.
 
 ```javascript
-// example code here
+const track = require('clearhead/track').bind(null, 'prop52');
+
+track('some-event');
 ```
 
 ### universal-analytics
@@ -392,12 +400,14 @@ Sends a prop to SiteCatalyst.
 Sends information to Google Universal Analytics.
 
 ```javascript
-// example code here
+import universalAnalytics from 'clearhead/universal-analytics';
+
+universalAnalytics(1234567, 'my-custom-variable');
 ```
 
 ### when
 
-Polls for a jQuery element, and exectues code when the element is found. Also can have optional timeout.
+Polls for a jQuery element, and executes code when the element is found. Also can have optional timeout.
 
 ```javascript
 function callBackFun() {
