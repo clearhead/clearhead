@@ -45,6 +45,8 @@ The `iterator` is called with an item from the list, and a done callback for whe
 has finished.
 
 ```javascript
+import { series } from 'clearhead/async';
+
 // Sum array items asynchronously using a series.
 series([1, 2, 3, 4], (curr, next, prev = 0) => {
 	// curr => the current item value
@@ -64,6 +66,8 @@ Runs the `queue` array of functions in sequence, each passing its results to the
 the array.
 
 ```javascript
+import { waterfall } from 'clearhead/async';
+
 waterfall([
 	function start(next) {
 		next(0);
@@ -85,6 +89,8 @@ waterfall([
 Breaks an array into smaller arrays of a given length.
 
 ```javascript
+import batch from 'clearhead/batch';
+
 var longArray = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 var smallerArrays = batch(longArray, 2);
 
@@ -111,7 +117,7 @@ smallerArrays -> [
 
 ### cookie
 
-Sets, gets, and del a cookie with a given name, value, and optional expiration date (in days).
+Sets, gets, and deletes a cookie with a given name, value, and optional expiration date (in days).
 
 ```javascript
 import cookie from 'clearhead/cookie';
@@ -155,18 +161,26 @@ myMadlib('scientist');
 
 Prevents a function from being recalled repeatedly. The function will be called again after it stops being called for N milliseconds.
 
+See https://css-tricks.com/the-difference-between-throttling-and-debouncing/ for a good writeup for the difference between debounce and throttle.
+
 ```javascript
-function dbFunction() {
-  console.log('debounce worked!');
-};
-debounce(dbFunction, 1000);
+import debounce from 'clearhead/debounce';
+
+//The inner function will only be called after the user has stopped scrolling for 100ms
+$(window).on('scroll', debounce(function() {
+  console.log('The user started scrolling and this function didn\'t execute until there was a 100ms break in the scrolling');
+}, 100));
 ```
 
 ### domready
 
 Runs a function on domready - to be used on sites that don't have jQuery right away and/or not at all but you need to wait till the DOM is ready to run something.
 ```javascript
-// example code here
+import domready from 'clearhead/domready';
+
+domready(function() {
+	console.log('The dom is ready! Do your thing.');
+});
 ```
 
 ### get-param
@@ -174,7 +188,10 @@ Runs a function on domready - to be used on sites that don't have jQuery right a
 Gets a param value from location.search.
 
 ```javascript
-// example code here
+import getParam from 'clearhead/get-param';
+
+//When run on the page: http://test.com?name=bob
+console.log(getParam('name')); //Outputs: "bob"
 ```
 
 ### goal
@@ -184,19 +201,6 @@ Fires strings into auto-detected analytics installs.
 const goal = require('clearhead/goal').bind(null, 'exp1-foo');
 
 goal('click', '#bar');
-
-optimizely.push(['trackEvent', 'exp1-foo-click-#bar'])
-monetateQ.push(['trackEvent', ['exp1-foo-click-#bar']])
-s.tl() // won't fire b/c !/^(prop|evar)/i.test(args[0])
-dataLayer.push({event:'clearhead.goal', meta:{category, action, label}})
-ga('send', 'event', 'exp1-foo', 'click', '#bar')
-_gaq.push(['_trackEvent', 'exp1-foo', 'click', '#bar']);
-
-const goal = require('goal').bind(null, 'prop46');
-goal('exp1-foo', 'clicked-header');
-optimizely.push(['trackEvent', 'prop46-exp1-foo-clicked-header'])
-monetateQ.push(['trackEvent', ['prop46-exp1-foo-clicked-header']])
-require('clearhead/track')('prop46', 'exp1-foo-clicked-header');
 ```
 
 ### google-analytics
@@ -204,6 +208,8 @@ require('clearhead/track')('prop46', 'exp1-foo-clicked-header');
 Sends information to googleAnalytics.
 
 ```javascript
+import googleAnalytics from 'clearhead/google-analytics';
+
 googleAnalytics(1234567, 'my-custom-variable');
 ```
 
@@ -212,6 +218,8 @@ googleAnalytics(1234567, 'my-custom-variable');
 Exposes information to googleTagManager by setting a global variable.
 
 ```javascript
+import googleTagManager from 'clearhead/google-tag-manager';
+
 googleTagManager(1234567, 'my-custom-variable');
 ```
 
@@ -220,6 +228,8 @@ googleTagManager(1234567, 'my-custom-variable');
 Loads a CSS file asynchronously.
 
 ```javascript
+import loadCSS from 'clearhead/load-css';
+
 loadCSS('../styles/styles.css', null, media);
 ```
 
@@ -228,6 +238,8 @@ loadCSS('../styles/styles.css', null, media);
 Loads a script and fires callback.
 
 ```javascript
+import loadScript from 'clearhead/load-script';
+
 function optCallBack() {
   console.log('my callback function is firing after the script loads!');
 };
@@ -236,10 +248,12 @@ loadScript('../src/main.js', optCallBack);
 
 ### log
 
-Console.logs based on auto sniffing debug cookie.
+Like a regular console.log but only fires in dev environments (localhost, preview links, debug cookies etc) so you can leave it in your code while pushing to production.
 
 ```javascript
-// example code here
+import log from 'clearhead/log';
+
+log('Something is happening'); //Outputs to the console when run from http://localhost:8000/ but not http://clientwebsite.com
 ```
 
 ### notify
@@ -247,6 +261,8 @@ Console.logs based on auto sniffing debug cookie.
 Notify.js is a jQuery plugin to provide simple yet fully customisable notifications.
 
 ```javascript
+import notify from 'clearhead/notify';
+
 $.notify('Hello!');
 
 // or pass in optional message style (e.g. success, info, warn, or error)
@@ -255,18 +271,27 @@ $.notify('Uh oh!', 'warn');
 
 ### object-assign-polyfill
 
-@beaulm No comments
+Gives all browsers object.assign capabilities.
 
 ```javascript
-// example code here
+import anything from 'clearhead/object-assign-polyfill';
+
+var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }
 ```
 
 ### onload-css
 
-Adds onload support for asynchronous stylesheets loaded with loadCSS.
+Adds onload support for asynchronous stylesheets loaded with loadCSS. Used with loadCSS above.
 
 ```javascript
-// example code here
+import onloadCSS from 'clearhead/onload-css';
+
+var stylesheet = loadCSS('path/to/mystylesheet.css');
+onloadCSS(stylesheet, function() {
+    console.log('Stylesheet has asynchronously loaded.');
+});
 ```
 
 ### optimizely-jquery-polyfill
@@ -274,7 +299,9 @@ Adds onload support for asynchronous stylesheets loaded with loadCSS.
 Returns a pollyfilled jQuery.
 
 ```javascript
-//example code here
+import pollyfill from 'clearhead/optimizely-jquery-polyfill';
+
+pollyfill($); // local ref to optimizely.$
 ```
 
 ### preload
@@ -282,9 +309,9 @@ Returns a pollyfilled jQuery.
 Preloads images.
 
 ```javascript
-preload('./imgs/img01.jpg', './imgs/img02.jpg', './imgs/img03.jpg', './imgs/img04.jpg');
+import preload from 'clearhead/preload';
 
-//need advice on what exactly is returned, not sure
+var arrayOfLoadedImages = preload('./imgs/img01.jpg', './imgs/img02.jpg', './imgs/img03.jpg', './imgs/img04.jpg');
 ```
 
 ### report
@@ -297,10 +324,14 @@ Sends an error back to GA as events for wallboards. Why a module? Because not al
 
 ### return-visitor
 
-Fires code when a user returns to an experiment. Uses clearhead/cookie.
+Fires code when a user returns to an experiment.
 
 ```javascript
-function returnVisitor(optCookieName = 'ch-exp-last-visit', optCallback = null, optCutoff = 1800, optFirstTime = true, optCookieDays = 365):
+import returnVisitor from 'clearhead/return-visitor';
+
+returnValue('unique-name-for-tracking-users-for-just-this-call', function() {
+	console.log('The user was last here over 30min ago');
+});
 ```
 
 ### slugify
@@ -308,6 +339,8 @@ function returnVisitor(optCookieName = 'ch-exp-last-visit', optCallback = null, 
 Returns the 'slug' of a string (replaces non-word characters with hyphens).
 
 ```javascript
+import slugify from 'clearhead/slugify';
+
 var articleTitle = 'How to use the Clearhead module library!';
 var articleSlug = slugify(articleTitle);
 console.log(articleSlug); //Outputs: how-to-use-the-clearhead-module-library
@@ -327,8 +360,15 @@ Borrowed from http://underscorejs.org/docs/underscore.html
 
 Returns a function, that, when invoked, will only be triggered at most once during a given window of time. Normally, the throttled function will run as much as it can, without ever going more than once per wait duration; but if you’d like to disable the execution on the leading edge, pass {leading: false}. To disable execution on the trailing edge, ditto.
 
+See https://css-tricks.com/the-difference-between-throttling-and-debouncing/ for a good writeup for the difference between throttle and debounce.
+
 ```javascript
-// example code here
+import throttle from 'clearhead/throttle';
+
+//The inner function will only be called every 100ms while the user is scrolling
+$(window).on('scroll', throttle(function() {
+  console.log('You\'ll see this message every 100ms while the user is still scrolling');
+}, 100));
 ```
 
 ### timpl
