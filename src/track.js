@@ -1,5 +1,4 @@
 /**
- * TODO: Better Docs -- TomF is a terrible person
  * @desc track() send prop to sitecat
  */
 import log from './log';

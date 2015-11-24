@@ -1,5 +1,8 @@
 /**
- * @desc domready() runs a function on domready
+ * @desc domready() runs a function on domready - to be used 
+ *                  on sites that don't have jQuery right away
+ *                  and/or not at all but you need to wait
+ *                  till the dom is ready to run something
  *
  * @param {Function} fn - the function to run on domready
  *

@@ -1,3 +1,16 @@
+/**
+ * @desc pollyfill($) returns a pollyfilled jQuery
+ *
+ * @param {Function} $ - the jQuery instance to pollyfill
+ *
+ * @return {void}
+ *
+ * usage:
+ *   import pollyfill from 'clearhead/optimizely-jquery-polyfill';
+ *   pollyfill($); // local ref to optimizely.$
+ *
+ */
+import './object-assign-polyfill';
 import fn from './optimizely-jquery-polyfill/fn';
 import fx from './optimizely-jquery-polyfill/fx';
 

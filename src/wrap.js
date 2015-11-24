@@ -1,5 +1,4 @@
 /**
- * TODO: Better Docs -- TomF is a terrible person
  * @desc wrap() - helper pattern for try / catch / report
  */
 import report from './report';
