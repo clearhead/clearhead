@@ -1,5 +1,6 @@
 import chai, { assert, expect } from 'chai';
 import { series, waterfall } from '../src/async';
+import returnVisitor from '../src/return-visitor';
 
 describe('#returnVisitor()', () => {
   it('run some code if a visitor has no cookie and optFirstTime is true', () => {
