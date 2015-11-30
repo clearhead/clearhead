@@ -1,5 +1,5 @@
 /**
- * @desc googleTagManager() exposes information to googleTagManager by 
+ * @desc googleTagManager() exposes information to googleTagManager by
  *                          setting a global variable
  *
  * @param {Number} experimentId - experimentId to send

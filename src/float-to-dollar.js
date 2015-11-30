@@ -5,7 +5,7 @@
  *
  * @param {Number} float - the number to be turned into a '$' with commas
  *
- * @return {String} - string beginning with a dollar sign and ending with two 
+ * @return {String} - string beginning with a dollar sign and ending with two
  *										decimal points for cents
  */
 function floatToDollar(num) {
