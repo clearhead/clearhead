@@ -358,6 +358,30 @@ store.get('key'); //Returns 'value'
 store.del('key');
 ```
 
+### time-triggered-manual-activation
+
+Activates an Optimizely experiment after a specified time
+
+```javascript
+import activateExperiment from 'clearhead/time-triggered-manual-activation';
+
+activateExperiment(1445021756, 9876543210); //After 18:55:56 GMT on Fri, 16 Oct 2015, Optimizely experiment 9876543210 will be activated
+```
+
+### time-window
+
+Runs a supplied callback only between the specified start and end times
+
+```javascript
+import timeWindow from 'clearhead/time-window';
+
+var callback = function(){
+	console.log('Callback successfully called!');
+};
+
+timeWindow(1445021756, 2147483647, callback); //Logs 'Callback successfully called!' since the current time is probably between 18:55:56 GMT on Fri, 16 Oct 2015 and 03:14:07 GMT on Tue, 19 Jan 2038
+```
+
 ### throttle
 
 Borrowed from http://underscorejs.org/docs/underscore.html
