@@ -17,7 +17,7 @@ After you've pushed your changes you can go to github and change to your new bra
 
 *Before* submitting a pull request, please make sure the following is done…
 
-1. You're working from a branch of `master`.
+1. You're working from a branch, not `master`.
 2. If your code can be tested, there's tests for it.
 3. You've updated necessary documentation.
 4. All tests and linting has passed (`gulp`).
@@ -39,4 +39,4 @@ Run `gulp` to make sure your code lints and your tests pass.
 
 ## License
 
-By contributing you agree that your contributions will be licensed under the same license as this project.
+By contributing you agree that your contributions will be licensed under the same [LICENSE](LICENSE) as this project.
