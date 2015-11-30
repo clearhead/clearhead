@@ -451,4 +451,4 @@ Helper pattern for try / catch / report.
 
 ## License
 
-See [LICENSE](LICENSE) file.
+See [LICENSE](LICENSE.md) file.

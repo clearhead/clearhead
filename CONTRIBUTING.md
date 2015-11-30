@@ -39,4 +39,4 @@ Run `gulp` to make sure your code lints and your tests pass.
 
 ## License
 
-By contributing you agree that your contributions will be licensed under the same [LICENSE](LICENSE) as this project.
+By contributing you agree that your contributions will be licensed under the same [LICENSE](LICENSE.md) as this project.
