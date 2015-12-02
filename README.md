@@ -172,6 +172,29 @@ $(window).on('scroll', debounce(function() {
 }, 100));
 ```
 
+### Deferred
+
+Provide a light-weight promise implementation.
+
+```javascript
+import Deferred from 'clearhead/Deferred';
+
+function doSomethingAsync() {
+  const dfd = Deferred();
+
+  setTimeout(() => {
+    if (true) dfd.resolve('it worked');
+    else dfd.reject('it failed');
+  }, 1000);
+
+  return dfd.promise();
+}
+
+doSomethingAsync()
+  .success(function successHandler() {})
+  .fail(function failureHandler() {});
+```
+
 ### domready
 
 Runs a function on domready - to be used on sites that don't have jQuery right away and/or not at all but you need to wait till the DOM is ready to run something.
