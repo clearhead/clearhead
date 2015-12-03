@@ -97,7 +97,7 @@ function timeWindow(startTime, endTime, callback, currentTime = null) {
     currentTime = parseInt(currentTime.toString().substr(0, 10));
   }
 
-	if(currentTime > startTime && currentTime < endTime) {
+	if(currentTime >= startTime && currentTime < endTime) {
 		var context, args;
 		callback.apply(context, args);
 		return true;
