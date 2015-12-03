@@ -60,7 +60,7 @@ function timeWindow(startTime, endTime, callback, currentTime = null) {
 	//This block allows you to test how this code would work at different times by using a query parameter
 	if(currentTime === null) {
 		currentTime = getParam('currentTime');
-		if(currentTime === '' || (currentTime.toString().length !== 10 && currentTime.toString().length !== 13)) {
+		if(currentTime === '') {
 			currentTime = new Date().getTime();
 
 			if(startTime.toString().length === 10) {
@@ -90,6 +90,12 @@ function timeWindow(startTime, endTime, callback, currentTime = null) {
 		console.log('You are way outta bounds here. The start/end time you supplied either exceedes the maximum or minimum possible');
 		return false;
 	}
+
+	if(startTime.toString().length !== endTime.toString().length || startTime.toString().length !== currentTime.toString().length) {
+    startTime = parseInt(startTime.toString().substr(0, 10));
+    endTime = parseInt(endTime.toString().substr(0, 10));
+    currentTime = parseInt(currentTime.toString().substr(0, 10));
+  }
 
 	if(currentTime > startTime && currentTime < endTime) {
 		var context, args;
