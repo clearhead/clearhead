@@ -1,5 +1,18 @@
 /**
  * @desc set() sets a cookie with optional days
+ *  @param {String} name - the name of the cookie
+ *  @param {String} value - the value of the cookie
+ *  @param {Number} optDays - days the cookie will exist for
+ *    NOTE: Not passing optDays will create a "Session Cookie"
+ *  @return {Undefined}
+
+ * @desc get() gets value of cookie
+ *  @param {String} name - name of cookie to get
+ *  @return {String|Null} - string value of cookie NOT A BOOL!
+ *
+ * @desc del() removes cookie
+ *  @param {String} name - name of cookie to delete
+ *  @return {Undefined}
  */
 
 const cookie = {
@@ -25,6 +38,7 @@ const cookie = {
     return null;
   },
   del(name) {
+    'use strict';
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
   },
 };
