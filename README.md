@@ -404,7 +404,7 @@ var callback = function(){
 
 timeWindow(1445021756, 2147483647, callback); //Logs 'Callback successfully called!' since the current time is probably between 18:55:56 GMT on Fri, 16 Oct 2015 and 03:14:07 GMT on Tue, 19 Jan 2038
 ```
-To use a trusted server time instead of relying on the client time, try passing the response from http://www.timeapi.org/utc/now as the currentTime parameter
+To use a trusted server time instead of relying on the client time, try passing the response from http://i.clrhd.me/timestamp as the currentTime parameter
 
 ### throttle
 
