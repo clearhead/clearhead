@@ -6,7 +6,12 @@
 import log from './log';
 import getParam from './get-param';
 
-function when(selector, callback, optTimeout) {
+function when(selector, callback, optTimeout, optQuitPolling) {
+  // quit if we have gone past the optQuitPolling time
+  if (optQuitPolling <= 0) {
+    log(selector, ' not found, stopped polling');
+    return false;
+  }
 
   // sniff for jQuery in local namespace
   var $jq = (
@@ -22,8 +27,10 @@ function when(selector, callback, optTimeout) {
     log('when:', selector, $this);
   }
 
+  var timeToQuit = optQuitPolling ? optQuitPolling - (optTimeout || 50) : undefined;
+
   return $this.length ? callback.call($this, $this) : setTimeout(
-    when.bind(null, selector, callback, optTimeout),
+    when.bind(null, selector, callback, optTimeout, timeToQuit),
     optTimeout || 50
   );
 
