@@ -1,6 +1,7 @@
 /**
  * @desc timeWindow() Runs a supplied callback only between the specified start and end times
  * To use a trusted server time instead of relying on the client time, try passing the response from http://i.clrhd.me/timestamp as the currentTime parameter
+ * You should be able to get the server time using something along the lines of: window.jQuery.get('http://107.170.199.159/timestamp').done(function(data){var serverTime = data;});
  *
  * @param {int|string} startTime - A UTC timestamp(in seconds|miliseconds -- 10|13 digit int), or a RFC2822 or ISO 8601 date(like: December 2, 2015, 12:01:00 EST) after which the callback should be run
  * @param {int|string} endTime - A UTC timestamp(in seconds|miliseconds -- 10|13 digit int), or a RFC2822 or ISO 8601 date(like: December 2, 2015, 12:01:00 EST) after which the callback should no longer be run
