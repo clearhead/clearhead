@@ -6,9 +6,13 @@
 import when from './when';
 
 function appendCss(css){
+  if (css.indexOf('<style>') !== 0 ) css = css.replace(/^/,'<style>');
+  if (css.indexOf('</style>') === -1 ) css = css.replace(/$/,'</style>');
   when('body', function(){
-    $('head').append(css)
+    document.head.insertAdjacentHTML('beforeend', css)
   });  
 }
 
 export default appendCss;
+
+var css = '<style>* {color: red}</style>'
