@@ -464,15 +464,15 @@ function callBackFun() {
   console.log('it happened!');
 };
 
-when($('.this-div'), callBackFun, 500);
+when('.this-div', callBackFun, 500);
 
 //OR
 
-when($('.this-div'), ['css', ['display', 'none']]);
+when('.this-div', ['css', ['display', 'none']]);
 
 //OR
 
-when($('.this-div'), ['on', ['click', function() {
+when('.this-div', ['on', ['click', function() {
   console.log('The element was clicked on');
 }]]);
 ```
