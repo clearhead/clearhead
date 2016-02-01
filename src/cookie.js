@@ -2,7 +2,9 @@
  * @desc set() sets a cookie with optional days
  *  @param {String} name - the name of the cookie
  *  @param {String} value - the value of the cookie
- *  @param {Number} optDays - days the cookie will exist for
+ *  @param {Object} [options] - the domain and optDays options
+ *  @param {String} [options.domain] - the cookie domain, e.g. '.example.com'
+ *  @param {Number} [options.optDays] - days the cookie will exist for
  *    NOTE: Not passing optDays will create a "Session Cookie"
  *  @return {Undefined}
 
