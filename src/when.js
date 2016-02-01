@@ -5,6 +5,8 @@
  *
  * @param {string} [selector] - Any valid jQuery selector
  * @param {function|array} [callback] - A callback function to run once the selected element has been found OR a multidimensional array which looks like ['method', ['arguments',...]] to call on that jQuery object
+ * @param {int} [optTimeout] - How frequently to check for the element (milliseconds)
+ * @param {int} [optQuitPolling] - How many milliseconds after which to stop checking for the element
  */
 import log from './log';
 import getParam from './get-param';
