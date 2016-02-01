@@ -16,30 +16,27 @@
  */
 
 const cookie = {
-  set(name, value, optDays) {
-    'use strict';
+  set(name, { value = 'true', domain = '', optDays } = {}) {
     let expires = '';
     if (optDays) {
       const date = new Date();
       date.setTime(date.getTime() + (optDays * 24 * 60 * 60 * 1000));
       expires = '; expires=' + date.toGMTString();
     }
-    document.cookie = name + '=' + value + expires + '; path=/';
+    document.cookie = `${name}=${value}; domain=${domain}; expires=${expires}; path=/`;
   },
   get(name) {
-    'use strict';
     const nameEQ = name + '=';
     const ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
       while (c.charAt(0) === ' ') c = c.substring(1, c.length);
       if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
   },
-  del(name) {
-    'use strict';
-    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+  del(name, domain = '') {
+    document.cookie = `${name}=; domain=${domain}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
   },
 };
 
