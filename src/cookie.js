@@ -23,7 +23,7 @@ const cookie = {
     if (optDays) {
       const date = new Date();
       date.setTime(date.getTime() + (optDays * 24 * 60 * 60 * 1000));
-      expires = '; expires=' + date.toGMTString();
+      expires = date.toGMTString();
     }
     document.cookie = `${name}=${value}; domain=${domain}; expires=${expires}; path=/`;
   },
