@@ -455,14 +455,35 @@ universalAnalytics(1234567, 'my-custom-variable');
 
 ### when
 
-Polls for a jQuery element, and executes code when the element is found. Also can have optional timeout.
+Polls for a jQuery element, and executes code when the element is found.
+
+Can be silenced (so it doesn't blow up your console with log statements) by adding silentWhen=true as a query parameter to the page or creating a silentWhen variable on the window and setting it to true.
 
 ```javascript
 function callBackFun() {
   console.log('it happened!');
 };
 
-when($('.this-div'), callBackFun, 500);
+when('.this-div', callBackFun);
+
+//or
+
+when('.this-div', function() {
+  console.log('its happening again!');
+});
+
+//or
+
+//Runs $('.this-div').css('color', 'red'); as soon as the element is found
+when('.this-div', 'css', 'color', 'red');
+
+//Stop the when loop by passing 'stop' as the first argument
+when('stop');
+
+//To stop all when loops after a certain amount of time
+setTimeout(function(){
+  when('stop');
+}, 2000);
 ```
 
 ### wrap
