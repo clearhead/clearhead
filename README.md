@@ -34,9 +34,9 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 # Modules
 
-### appendCss
+### append-css
 
-Adds CSS to the very end of the head.
+Appends css once jQuery + head element have finished loading.
 
 ```javascript
 import css from './v1.scss';
