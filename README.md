@@ -34,6 +34,17 @@ NOTE: ES6 +browserify compilation best used alongside `gulp-clearbuild`
 
 # Modules
 
+### appendCss
+
+Adds CSS to the very end of the head.
+
+```javascript
+import css from './v1.scss';
+import appendCss from 'clearhead/append-css';
+
+appendCss(css);
+```
+
 ### async
 
 Provides a method of avoiding nested callbacks when performing multiple asynchronous operations (note that this module does not enforce that the operations be asynchronous). The module exposes two methods `series` and `waterfall`.
