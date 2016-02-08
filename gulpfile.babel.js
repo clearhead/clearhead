@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import babel from 'babel/register';
+import babel from 'babel-core/register';
 import babelify from 'babelify';
 import through2 from 'through2';
 import browserify from 'browserify';
@@ -16,8 +16,9 @@ const sequence = gulpSequence.use(gulp);
 gulp.task('default', sequence('lint', 'test'));
 
 const babelConfig = {
-  jsxPragma: 'jsxr',
-  plugins: ['object-assign'],
+  // jsxPragma: 'jsxr',
+  // plugins: ['object-assign'],
+  presets:['es2015', 'react'],
 };
 
 // -- Lint ----------

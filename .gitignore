@@ -2,6 +2,7 @@
 **/*.log
 
 # Builds
+coverage
 lib
 test/fixtures/lib
 *.sublime-project
