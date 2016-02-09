@@ -71,6 +71,7 @@ function when(selector, callback) {
       //If there are no more elements to check for
       if(elements.length < 1) {
         clearInterval(mainLoop);
+        mainLoop = null;
       }
     }, 50);
   }
