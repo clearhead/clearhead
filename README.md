@@ -319,12 +319,12 @@ onloadCSS(stylesheet, function() {
 
 ### optimizely-jquery-polyfill
 
-Returns a pollyfilled jQuery.
+Adds a few functions (`on`, `off`, `fadeIn`, `fadeOut`) to Optimizely's version of jQuery.
 
 ```javascript
-import pollyfill from 'clearhead/optimizely-jquery-polyfill';
+import polyfill from 'clearhead/optimizely-jquery-polyfill';
 
-pollyfill($); // local ref to optimizely.$
+polyfill($); // local ref to optimizely.$
 ```
 
 ### preload
