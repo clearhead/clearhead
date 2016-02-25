@@ -5,7 +5,7 @@ describe('#cookie()', () => {
 
   const cookieIn = 1;
   const cookieName = 'testcookie';
-  cookie.set(cookieName, cookieIn);
+  cookie.set(cookieName, cookieIn, 365);
 
   it('should set and get a cookie', () => {
     const cookieOut = cookie.get(cookieName);
