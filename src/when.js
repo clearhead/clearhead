@@ -17,6 +17,7 @@ var elements = [];
 function when(selector, callback) {
   if(selector === 'stop') {
     clearInterval(mainLoop);
+    mainLoop = null;
     return true;
   }
 
