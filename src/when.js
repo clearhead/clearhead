@@ -17,6 +17,7 @@ var elements = [];
 function when(selector, callback) {
   if(selector === 'stop') {
     clearInterval(mainLoop);
+    return true;
   }
 
   //Convert the list of supplied arguments into a true array (since it's actually an object)
