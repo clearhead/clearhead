@@ -53,7 +53,7 @@ function when(selector, callback) {
         }
 
         //If the desired element has been found
-        if($this.length) {
+        if($this !== undefined && $this.length) {
           var getType = {};
           //If the supplied callback was indeed a function
           if(xCallback && getType.toString.call(xCallback) === '[object Function]') {
