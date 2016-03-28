@@ -23,8 +23,10 @@
  *
  */
 import track from './track';
-const log = require('./log').bind(null, 'clearhead/goal:');
-const dataLayerTrigger = require('./deps/datalayer-trigger')();
+import tmpLog from './log';
+const log = tmpLog.bind(null, 'clearhead/goal:');
+import dataLayerTrigger from './deps/datalayer-trigger';
+dataLayerTrigger();
 
 function goal(category, ...args /*option, label*/ ) {
   'use strict';
