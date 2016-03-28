@@ -38,7 +38,10 @@ gulp.task('test', ['test:modules', 'test:browser']);
 gulp.task('test:modules', (done) => {
   new Server({
     configFile: __dirname + '/karma.conf.js',
-  }, done).start();
+  }, function(){
+    done();
+    process.exit();
+  }).start();
   // return gulp.src(['./test/*.js'])
   //   .pipe(mocha({
   //     compilers: {
