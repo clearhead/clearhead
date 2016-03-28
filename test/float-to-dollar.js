@@ -10,7 +10,8 @@ describe('#floatToDollar()', () => {
     assert.equal(floatToDollar(-100), '$-100.00');
     assert.equal(floatToDollar(1.999), '$2.00');
     assert.equal(floatToDollar(1.001), '$1.00');
-    assert.equal(floatToDollar(1.005), '$1.01');
+    assert.equal(floatToDollar(1.005), '$1.00');
+    assert.equal(floatToDollar(1.006), '$1.01');
   });
 
 });
