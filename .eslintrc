@@ -1,13 +1,21 @@
 {
   "ecmaFeatures": {
     "jsx": true,
-    "modules": true
+    "modules": true,
+    "sourceType": "module"
   },
   "env": {
     "browser": true,
     "es6": true,
     "mocha": true,
     "node": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true,
+    },
   },
   "globals": {
   },
