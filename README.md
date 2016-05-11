@@ -479,8 +479,8 @@ when('.this-div', callBackFun);
 
 //or
 
-when('.this-div', function() {
-  console.log('its happening again!');
+when('.this-div', function($el) {
+  console.log($el.text());
 });
 
 //or
