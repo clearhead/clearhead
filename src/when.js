@@ -33,9 +33,11 @@ function when(selector, callback) {
     mainLoop = setInterval(function() {
       //Sniff for jQuery in local namespace
       var $jq = undefined;
+      //use optimizely jQuery if it exists
       if(window.hasOwnProperty('optimizely') && typeof optimizely.$ === 'function' && optimizely.$.hasOwnProperty('fn') && optimizely.$.fn.hasOwnProperty('jquery')) {
         $jq = optimizely.$;
       }
+      //use window jQuery if it exists
       if(typeof jQuery === 'function' && jQuery.hasOwnProperty('fn') && jQuery.fn.hasOwnProperty('jquery')) {
         $jq = jQuery;
       }
