@@ -32,11 +32,15 @@ function when(selector, callback) {
     //Start a loop that checks for elements
     mainLoop = setInterval(function() {
       //Sniff for jQuery in local namespace
-      var $jq = (
-        typeof jQuery === 'function' ? jQuery : (
-          (typeof $ === 'function' && $.fn && $.fn.jquery) ? $ : undefined
-        )
-      );
+      var $jq = undefined;
+      //use optimizely jQuery if it exists
+      if(window.hasOwnProperty('optimizely') && typeof optimizely.$ === 'function' && optimizely.$.hasOwnProperty('fn') && optimizely.$.fn.hasOwnProperty('jquery')) {
+        $jq = optimizely.$;
+      }
+      //use window jQuery if it exists
+      if(typeof jQuery === 'function' && jQuery.hasOwnProperty('fn') && jQuery.fn.hasOwnProperty('jquery')) {
+        $jq = jQuery;
+      }
 
       for(var i=0; i<elements.length; i++) {
         //Just some reference variables to make the code easier to read
