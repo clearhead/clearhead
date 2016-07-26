@@ -495,6 +495,11 @@ when('stop');
 setTimeout(function(){
   when('stop');
 }, 2000);
+
+//To force use of window.jQuery, enter 'windowJQ' as a third argument
+when('.this-div', function(){
+  console.log('found element with window.jQuery!');
+}, 'windowJQ');
 ```
 
 ### wrap

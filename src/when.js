@@ -14,7 +14,7 @@ import getParam from './get-param';
 var mainLoop = null;
 var elements = [];
 
-function when(selector, callback) {
+function when(selector, callback, windowJQ) {
   if(selector === 'stop') {
     clearInterval(mainLoop);
     mainLoop = null;
@@ -34,7 +34,7 @@ function when(selector, callback) {
       //Sniff for jQuery in local namespace
       var $jq = undefined;
       //use optimizely jQuery if it exists
-      if(window.hasOwnProperty('optimizely') && typeof optimizely.$ === 'function' && optimizely.$.hasOwnProperty('fn') && optimizely.$.fn.hasOwnProperty('jquery')) {
+      if(window.hasOwnProperty('optimizely') && typeof optimizely.$ === 'function' && optimizely.$.hasOwnProperty('fn') && optimizely.$.fn.hasOwnProperty('jquery') && windowJQ !== 'windowJQ') {
         $jq = optimizely.$;
       }
       //use window jQuery if it exists
