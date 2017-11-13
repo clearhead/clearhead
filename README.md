@@ -257,6 +257,10 @@ import googleTagManager from 'clearhead/google-tag-manager';
 googleTagManager(1234567, 'my-custom-variable');
 ```
 
+### inspect-unique-globals
+
+Shows global variables unique to a site. Use in console.
+
 ### load-css
 
 Loads a CSS file asynchronously.
