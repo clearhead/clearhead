@@ -1,23 +1,67 @@
+/**
+ * sortClassNames - Default-sorts through the an element's class list to more easily compare against other class name strings.
+ *
+ * @param  {type} classNames description
+ * @return {string}
+ */
 function sortClassNames(classNames) {
   return classNames.split(' ').sort().join(' ');
 }
 
+/**
+ * hasChanged - description
+ *
+ * @param  {string} oldClassNames - The target element's previous class names.
+ * @param  {string} newClassNames - The target element's changed class names
+ * @return {boolean}              - Evaluator for whether or not the comparable class names are different from eachother.
+ */
 function hasChanged(oldClassNames, newClassNames) {
   if (oldClassNames !== newClassNames) return true;
   else if (oldClassNames == newClassNames) return false;
 }
 
-function findChange(oldClassNames, newClassNames) {
-  // Removed a class
-  if (oldClassNames.split(' ').length > newClassNames.split(' ').length) {
-    return filterClasses(oldClassNames, newClassNames);
+/**
+ * findClassNameDifference - description
+ *
+ * @param  {string} firstClassList  - The (longer?) class list to compare against the second class list.
+ * @param  {string} secondClassList - The (shorter?) class list to compare with the first class list.
+ * @return {string=}                - The different class between the two class lists.
+ */
+function findClassNameDifference(firstClassList, secondClassList) {
+  const whichOneIsDifferend = firstClassList.split(' ').filter((className, i) => {
+    if (secondClassList.indexOf(className) === -1) return className;
+  });
 
-  // Added a class
-  } else if (oldClassNames.length < newClassNames.length) {
-    return filterClasses(newClassNames, oldClassNames);
-  }
+  if (!!whichOneIsDifferend && whichOneIsDifferend.length <= 1) return whichOneIsDifferend[0];
+  else whichOneIsDifferend;
 }
 
+/**
+ * getClassNameChange - Determines how to filter through each class list to find the difference between the two.
+ *
+ * @param  {string} oldClassNames - The target element's previous class names.
+ * @param  {string} newClassNames - The target element's changed class names.
+ * @return {@findClassNameDifference}
+ */
+function getClassNameChange(oldClassNames, newClassNames) {
+  // Removed a class
+  if (oldClassNames.length > newClassNames.length) {
+    return findClassNameDifference(oldClassNames, newClassNames);
+  }
+  // Added or changed a class
+  return findClassNameDifference(newClassNames, oldClassNames);
+}
+
+/**
+ * classNameChange - Uses a mutation observer to watch for when an element's class
+ * names has been added to/removed from.
+ *
+ * @param  {string} selector  - The css selector to query the DOM for the element. *
+ * @param  {function} callback - The function to run once/if target element's name has changed.
+ * @param  {object} config={attributes: true} - Target node's default configuration is set to be for target element but could be adjusted to watch on a parent element and listen to changes in children elements.
+ *
+ * @return {undefined}
+ */
 function classNameChange(selector, callback, config={attributes: true}) {
   const target = document.querySelector(selector);
 
@@ -25,24 +69,15 @@ function classNameChange(selector, callback, config={attributes: true}) {
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      console.log('mutation: ', mutation);
       const newClassNames = sortClassNames(target.className);
 
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
-        console.log('changed name: ', findChange(oldClassNames, newClassNames));
 
-        callback(findChange(oldClassNames, newClassNames), observer, mutation);
+        callback(getClassNameChange(oldClassNames, newClassNames), observer, mutation);
       }
     });
   });
 
   observer.observe(target, config);
 }
-
-
-// try {
-//
-// } catch {
-//   return window.console.error('CLASS NAME CHANGE ERROR');
-// }
