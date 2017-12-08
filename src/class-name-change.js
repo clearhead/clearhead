@@ -5,7 +5,7 @@
  * @return {string}
  */
 function sortClassNames(classNames) {
-  return classNames.split(' ').sort().join(' ');
+  return classNames.split(' ').trim().sort();
 }
 
 /**
@@ -24,33 +24,37 @@ function hasChanged(oldClassNames, newClassNames) {
 /**
  * findClassNameDifference - description
  *
- * @param  {string} firstClassList  - The (longer?) class list to compare against the second class list.
- * @param  {string} secondClassList - The (shorter?) class list to compare with the first class list.
- * @return {string=}                - The different class between the two class lists.
+ * @param  {array} firstClassList   - The (longer=) class list to compare against the second class list.
+ * @param  {string} secondClassList - The (shorter=) class list to compare with the first class list.
+ * @return {array}                  - The different class between the two class lists.
  */
 function findClassNameDifference(firstClassList, secondClassList) {
-  const whichOneIsDifferent = firstClassList.split(' ').filter((className, i) => {
-    if (secondClassList.indexOf(className) === -1) return className;
-  });
-
-  if (!!whichOneIsDifferent && whichOneIsDifferent.length <= 1) return whichOneIsDifferent[0];
-  else whichOneIsDifferent;
+  return firstClassList.filter((className) => secondClassList.indexOf(className) === -1);
 }
 
+// TODO: compare fn bevore "getClassName"
+function determineHowToCompareClassLists(oldClassNames, newClassNames) {
+  // Removed a class
+  if (oldClassNames.length > newClassNames.length) {
+    // return findClassNameDifference(oldClassNames, newClassNames);
+    return [oldClassNames, newClassNames];
+  }
+
+  // Added or changed a class
+  // return findClassNameDifference(newClassNames, oldClassNames);
+  return return [newClassNames, oldClassNames];
+}
 /**
- * getClassNameChange - Determines how to filter through each class list to find the difference between the two.
+ * getClassChanges - Determines how to filter through each class list to find the difference between the two.
  *
  * @param  {string} oldClassNames - The target element's previous class names.
  * @param  {string} newClassNames - The target element's changed class names.
  * @return {@findClassNameDifference}
  */
-function getClassNameChange(oldClassNames, newClassNames) {
-  // Removed a class
-  if (oldClassNames.length > newClassNames.length) {
-    return findClassNameDifference(oldClassNames, newClassNames);
-  }
-  // Added or changed a class
-  return findClassNameDifference(newClassNames, oldClassNames);
+function getClassChanges(oldClassNames, newClassNames) {
+  const comparableClassLists = determineHowToCompareClassLists(oldClassNames, newClassNames);
+
+  findClassNameDifference(comparableClassLists[0], comparableClassLists[1]);
 }
 
 /**
@@ -63,7 +67,7 @@ function getClassNameChange(oldClassNames, newClassNames) {
  *
  * @return {undefined}
  */
-function classNameChange(selector, callback, config={attributes: true}) {
+function classNameChange(selector, callback, config={attributes: true}, shouldKeepObser) {
   const target = document.querySelector(selector);
 
   const oldClassNames = sortClassNames(target.className);
@@ -75,7 +79,7 @@ function classNameChange(selector, callback, config={attributes: true}) {
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
 
-        callback(getClassNameChange(oldClassNames, newClassNames), observer, mutation);
+        callback(getClassChanges(oldClassNames, newClassNames), target, observer);
       }
     });
   });
