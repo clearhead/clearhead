@@ -17,7 +17,8 @@ function sortClassNames(classNames) {
  */
 function hasChanged(oldClassNames, newClassNames) {
   if (oldClassNames !== newClassNames) return true;
-  else if (oldClassNames == newClassNames) return false;
+
+  return false;
 }
 
 /**
@@ -28,12 +29,12 @@ function hasChanged(oldClassNames, newClassNames) {
  * @return {string=}                - The different class between the two class lists.
  */
 function findClassNameDifference(firstClassList, secondClassList) {
-  const whichOneIsDifferend = firstClassList.split(' ').filter((className, i) => {
+  const whichOneIsDifferent = firstClassList.split(' ').filter((className, i) => {
     if (secondClassList.indexOf(className) === -1) return className;
   });
 
-  if (!!whichOneIsDifferend && whichOneIsDifferend.length <= 1) return whichOneIsDifferend[0];
-  else whichOneIsDifferend;
+  if (!!whichOneIsDifferent && whichOneIsDifferent.length <= 1) return whichOneIsDifferent[0];
+  else whichOneIsDifferent;
 }
 
 /**
