@@ -1,19 +1,19 @@
 /**
- * sortClassNames - Default-sorts through the an element's class list to more easily compare against other class name strings.
+ * sortClassNames - Default-sorts through the an element's class list to more easily compare against other class name lists.
  *
- * @param  {type} classNames description
- * @return {string}
+ * @param  {string} classNames - The element's string of class names.
+ * @return {array}             - A sorted list the class names.
  */
 function sortClassNames(classNames) {
-  return classNames.split(' ').trim().sort();
+  return classNames.split(' ').sort();
 }
 
 /**
  * hasChanged - description
  *
- * @param  {string} oldClassNames - The target element's previous class names.
- * @param  {string} newClassNames - The target element's changed class names
- * @return {boolean}              - Evaluator for whether or not the comparable class names are different from eachother.
+ * @param  {array} oldClassNames - The target element's previous class names.
+ * @param  {array} newClassNames - The target element's new list of class names.
+ * @return {boolean}             - Evaluator for whether or not the comparable class names are different from eachother.
  */
 function hasChanged(oldClassNames, newClassNames) {
   if (oldClassNames !== newClassNames) return true;
@@ -22,7 +22,7 @@ function hasChanged(oldClassNames, newClassNames) {
 }
 
 /**
- * findClassNameDifference - description
+ * findClassNameDifference - Compares two lists of class names, returning all differences.
  *
  * @param  {array} firstClassList   - The (longer=) class list to compare against the second class list.
  * @param  {string} secondClassList - The (shorter=) class list to compare with the first class list.
@@ -32,42 +32,47 @@ function findClassNameDifference(firstClassList, secondClassList) {
   return firstClassList.filter((className) => secondClassList.indexOf(className) === -1);
 }
 
-// TODO: compare fn bevore "getClassName"
+/**
+ * determineHowToCompareClassLists - Determines which list to use to compare against the other.
+ *
+ * @param  {array} oldClassNames - The target element's previous class names.
+ * @param  {array} newClassNames - The target element's new list of class names.
+ * @return {array}               - The correctly ordered list of class lists.
+ */
 function determineHowToCompareClassLists(oldClassNames, newClassNames) {
-  // Removed a class
+
+  // Removed a class.
   if (oldClassNames.length > newClassNames.length) {
-    // return findClassNameDifference(oldClassNames, newClassNames);
     return [oldClassNames, newClassNames];
   }
 
-  // Added or changed a class
-  // return findClassNameDifference(newClassNames, oldClassNames);
-  return return [newClassNames, oldClassNames];
+  // Added or changed a class.
+  return [newClassNames, oldClassNames];
 }
 /**
- * getClassChanges - Determines how to filter through each class list to find the difference between the two.
+ * getClassChange - Determines how to filter through each class list to find the difference between the two.
  *
- * @param  {string} oldClassNames - The target element's previous class names.
- * @param  {string} newClassNames - The target element's changed class names.
+ * @param  {array} oldClassNames - The target element's previous class names.
+ * @param  {array} newClassNames - The target element's new list of class names.
  * @return {@findClassNameDifference}
  */
-function getClassChanges(oldClassNames, newClassNames) {
+function getClassChange(oldClassNames, newClassNames) {
   const comparableClassLists = determineHowToCompareClassLists(oldClassNames, newClassNames);
 
-  findClassNameDifference(comparableClassLists[0], comparableClassLists[1]);
+  return findClassNameDifference(comparableClassLists[0], comparableClassLists[1]);
 }
 
 /**
  * classNameChange - Uses a mutation observer to watch for when an element's class
  * names has been added to/removed from.
  *
- * @param  {string} selector  - The css selector to query the DOM for the element. *
- * @param  {function} callback - The function to run once/if target element's name has changed.
+ * @param  {string} selector  - The css selector to query the DOM for the element.
  * @param  {object} config={attributes: true} - Target node's default configuration is set to be for target element but could be adjusted to watch on a parent element and listen to changes in children elements.
+ * @param  {function} callback - The function to run once/if target element's name has changed.
  *
  * @return {undefined}
  */
-function classNameChange(selector, callback, config={attributes: true}, shouldKeepObser) {
+function classNameChange(selector, config={attributes: true}, callback) {
   const target = document.querySelector(selector);
 
   const oldClassNames = sortClassNames(target.className);
@@ -78,8 +83,8 @@ function classNameChange(selector, callback, config={attributes: true}, shouldKe
 
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
-
-        callback(getClassChanges(oldClassNames, newClassNames), target, observer);
+        console.log('getClassChange: ', getClassChange(oldClassNames, newClassNames));
+        callback(getClassChange(oldClassNames, newClassNames), target, observer);
       }
     });
   });
