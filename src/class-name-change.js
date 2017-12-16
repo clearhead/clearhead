@@ -9,6 +9,23 @@ function sortClassNames(classList) {
 }
 
 /**
+ * allClassesChanged - description
+ *
+ * @param  {type} oldClassNames description
+ * @param  {type} newClassNames description
+ * @return {type}               description
+ */
+function allClassesChanged(oldClassNames, newClassNames) {
+  const classLists = orderClassLists(oldClassNames, newClassNames);
+
+  if (!classLists[0].length) {
+    return classLists[1];
+  } else if (!classLists[1].length) {
+    return classLists[0];
+  }
+}
+
+/**
  * hasChanged - description
  *
  * @param  {array} oldClassNames - The target element's previous class names.
@@ -29,7 +46,7 @@ function hasChanged(oldClassNames, newClassNames) {
  * @return {array}                  - The different class between the two class lists.
  */
 function findClassNameDifference(firstClassList, secondClassList) {
-  return firstClassList.filter((className) => secondClassList.indexOf(className) === -1);
+ return firstClassList.filter((className) => secondClassList.indexOf(className) === -1);
 }
 
 /**
@@ -73,18 +90,28 @@ function getClassChange(oldClassNames, newClassNames) {
  * @return {undefined}
  */
 export default function classNameChange(selector, callback, config={attributes: true}) {
-  const target = document.querySelector(selector);
+  var target = document.querySelector(selector);
 
-  const oldClassNames = sortClassNames(target.className);
+  var oldClassNames = sortClassNames(target.className);
 
-  const observer = new MutationObserver((mutations) => {
+  var observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      const newClassNames = sortClassNames(target.className);
+      var newClassNames = sortClassNames(target.className);
+
+      // If all classes were removed, just send back the original class list
+      if (!!allClassesChanged(oldClassNames, newClassNames)) {
+        observer.disconnect();
+
+        callback(allClassesChanged(oldClassNames, newClassNames), target);
+      }
 
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
         // send back all class name differences w/ original element & observer (if user wants to make change and keep observing).
-        callback(getClassChange(oldClassNames, newClassNames), target, observer);
+
+        if (getClassChange(oldClassNames, newClassNames).length > 0) {
+          callback(getClassChange(oldClassNames, newClassNames), target);
+        }
       }
     });
   });
