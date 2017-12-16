@@ -9,11 +9,12 @@ function sortClassNames(classList) {
 }
 
 /**
- * allClassesChanged - description
+ * allClassesChanged - Checks if the old/new class names were either completely
+ * removed or all new ones had been added.
  *
- * @param  {type} oldClassNames description
- * @param  {type} newClassNames description
- * @return {type}               description
+ * @param  {array} oldClassNames - The target element's previous class names.
+ * @param  {array} newClassNames - The target element's new list of class names.
+ * @return {array}               - The list of all class names added/removed.
  */
 function allClassesChanged(oldClassNames, newClassNames) {
   const classLists = orderClassLists(oldClassNames, newClassNames);
