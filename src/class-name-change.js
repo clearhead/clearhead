@@ -1,11 +1,11 @@
 /**
  * sortClassNames - Default-sorts through the an element's class list to more easily compare against other class name lists.
  *
- * @param  {array} classNames - The element's list of classes.
+ * @param  {array} classList - The element's list of classes.
  * @return {array}             - A sorted list the class names.
  */
-function sortClassNames(classNames) {
-  return classList.sort();
+function sortClassNames(classList) {
+  return classList.split(' ').sort();
 }
 
 /**
@@ -72,14 +72,14 @@ function getClassChange(oldClassNames, newClassNames) {
  *
  * @return {undefined}
  */
-export default function classNameChange(selector, config={attributes: true}, callback) {
+export default function classNameChange(selector, callback, config={attributes: true}) {
   const target = document.querySelector(selector);
 
   const oldClassNames = sortClassNames(target.className);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      const newClassNames = sortClassNames(target.classList);
+      const newClassNames = sortClassNames(target.className);
 
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
