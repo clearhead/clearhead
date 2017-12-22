@@ -9,24 +9,6 @@ function sortClassNames(classList) {
 }
 
 /**
- * allClassesChanged - Checks if the old/new class names were either completely
- * removed or all new ones had been added.
- *
- * @param  {array} oldClassNames - The target element's previous class names.
- * @param  {array} newClassNames - The target element's new list of class names.
- * @return {array}               - The list of all class names added/removed.
- */
-function allClassesChanged(oldClassNames, newClassNames) {
-  const classLists = orderClassLists(oldClassNames, newClassNames);
-
-  if (!classLists[0].length) {
-    return classLists[1];
-  } else if (!classLists[1].length) {
-    return classLists[0];
-  }
-}
-
-/**
  * hasChanged - description
  *
  * @param  {array} oldClassNames - The target element's previous class names.
@@ -91,27 +73,20 @@ function getClassChange(oldClassNames, newClassNames) {
  * @return {undefined}
  */
 export default function classNameChange(selector, callback, config={attributes: true}) {
-  var target = document.querySelector(selector);
+  const target = document.querySelector(selector);
 
-  var oldClassNames = sortClassNames(target.className);
+  const oldClassNames = sortClassNames(target.className);
 
-  var observer = new MutationObserver((mutations) => {
+  const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      var newClassNames = sortClassNames(target.className);
-
-      // If all classes were removed, just send back the original class list
-      if (!!allClassesChanged(oldClassNames, newClassNames)) {
-        observer.disconnect();
-
-        callback(allClassesChanged(oldClassNames, newClassNames), target);
-      }
+      const newClassNames = sortClassNames(target.className);
 
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
-        // send back all class name differences w/ original element & observer (if user wants to make change and keep observing).
 
+        // Execute callback fn once a change has been detected.
         if (getClassChange(oldClassNames, newClassNames).length > 0) {
-          callback(getClassChange(oldClassNames, newClassNames), target);
+          callback(target);
         }
       }
     });
