@@ -16,9 +16,7 @@ function sortClassNames(classList) {
  * @return {boolean}             - Evaluator for whether or not the comparable class names are different from eachother.
  */
 function hasChanged(oldClassNames, newClassNames) {
-  if (oldClassNames !== newClassNames) return true;
-
-  return false;
+  return (oldClassNames !== newClassNames);
 }
 
 /**
@@ -67,8 +65,13 @@ function getClassChange(oldClassNames, newClassNames) {
  * names has been added to/removed from.
  *
  * @param  {string} selector  - The css selector to query the DOM for the element.
- * @param  {object} config={attributes: true} - Target node's default configuration is set to be for target element but could be adjusted to watch on a parent element and listen to changes in children elements.
- * @param  {function} callback - The function to run once target element's name has changed.
+ *
+ * @param  {object} config={attributes: true} - Target node's default
+ * configuration is set to be for target element but could be adjusted to
+ * watch on a parent element and listen to changes in children elements.
+ * 
+ * @param  {function} callback - The function to run once target element's
+ * name has changed.
  *
  * @return {undefined}
  */
@@ -78,16 +81,13 @@ export default function classNameChange(selector, callback, config={attributes: 
   const oldClassNames = sortClassNames(target.className);
 
   const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
+    mutations.map(() => {
       const newClassNames = sortClassNames(target.className);
 
       if (hasChanged(oldClassNames, newClassNames)) {
         observer.disconnect();
 
-        // Execute callback fn once a change has been detected.
-        if (getClassChange(oldClassNames, newClassNames).length > 0) {
-          callback(target);
-        }
+        callback(target);
       }
     });
   });
